@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Singular value decomposition · Matrix Theory</title>
+<link rel="stylesheet" href="../assets/reader.css">
+<script defer src="../assets/math-config.js"></script><script defer src="../assets/mathjax-tex-svg.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="../index.html">Matrix Theory</a>
+  <nav aria-label="Reader"><a href="../index.html">Chapters</a><a href="../study-guide.html">Study guide</a><a href="../source-map.html">Lectures</a><a href="../laboratory.html">Labs</a></nav>
+</header>
+<main id="main" class="reading"><p class="context">Chapter 19 · <a href="../source-map.html#l74">Lectures 74–77</a></p><h1>Singular value decomposition</h1><nav class="recordings" aria-label="Source recordings"><a href="https://www.youtube.com/watch?v=7wDQOLHLu-I">L74</a> <a href="https://www.youtube.com/watch?v=15E5p2M_uv4">L75</a> <a href="https://www.youtube.com/watch?v=hy_2HezdzQo">L76</a> <a href="https://www.youtube.com/watch?v=dZbuA6P_WvE">L77</a></nav><p>A calibration array can hide a direction even when each coordinate separately appears in a reading. It can also detect a direction so weakly that a small sensor error dominates the signal. Singular values distinguish these cases by measuring gains between orthonormal input and output coordinates.</p>
+<p>In an original four-channel model, the first two sensors duplicate a sum, a third reads a weak actuator, and the fourth has no modeled response. Let <span class="math">\(x=(x_1,x_2,x_3)^T\)</span> be the real, dimensionless command, and write <span class="math">\(Ax\)</span> for its output. For <span class="math">\(0&lt;\varepsilon&lt;1\)</span> the response matrix is</p>
+<div class="equation">\[A=\begin{pmatrix}
+1&amp;1&amp;0\\
+1&amp;1&amp;0\\
+0&amp;0&amp;\varepsilon\\
+0&amp;0&amp;0
+\end{pmatrix}.\]</div>
+
+<div class="toc">
+<ul>
+<li><a href="#rectangular-maps-have-directional-gains-l74-0103">Rectangular maps have directional gains (L74 01:03)</a></li>
+<li><a href="#two-independent-changes-of-coordinates-l75-0031">Two independent changes of coordinates (L75 00:31)</a></li>
+<li><a href="#the-partition-reveals-four-subspaces-l76-0200">The partition reveals four subspaces (L76 02:00)</a></li>
+<li><a href="#gains-conditioning-and-discarding-a-direction-l77-0500">Gains, conditioning, and discarding a direction (L77 05:00)</a></li>
+<li><a href="#laboratory">Laboratory</a></li>
+<li><a href="#exercises-with-solutions">Exercises with solutions</a></li>
+</ul>
+</div>
+<h2 id="rectangular-maps-have-directional-gains-l74-0103">Rectangular maps have directional gains (<a href="https://www.youtube.com/watch?v=7wDQOLHLu-I&amp;t=63s">L74 01:03</a>)</h2>
+<p>For this section take a general <span class="math">\(A\in\mathbb C^{m\times n}\)</span> with positive dimensions, and use <span class="math">\(A^*\)</span> for the adjoint. The Euclidean norm is <span class="math">\(\|x\|_2=\sqrt{x^*x}\)</span>. Define the singular values <span class="math">\(\sigma_1\geq\cdots\geq\sigma_p\geq0\)</span>, where <span class="math">\(p=\min(m,n)\)</span>, as the square roots of the <span class="math">\(p\)</span> largest eigenvalues of <span class="math">\(A^*A\)</span>, counting multiplicity. If <span class="math">\(n&gt;m\)</span>, the extra <span class="math">\(n-m\)</span> eigenvalues are zero because the rank of <span class="math">\(A^*A\)</span> is at most <span class="math">\(m\)</span>. The eigenvalues are real and nonnegative because <span class="math">\(A^*A\)</span> is Hermitian and <span class="math">\(x^*A^*Ax=\|Ax\|_2^2\geq0\)</span>.</p>
+<p>In the calibration array, the first two columns agree, so the difference direction <span class="math">\((1,-1,0)^T/\sqrt{2}\)</span> has zero gain. The unit sum direction <span class="math">\((1,1,0)^T/\sqrt2\)</span> has gain <span class="math">\(2\)</span>. The unit third-coordinate direction has gain <span class="math">\(\varepsilon\)</span>. The respective images are either zero or orthogonal. Direct multiplication gives the same conclusion: the top-left <span class="math">\(2\)</span>-by-<span class="math">\(2\)</span> block of <span class="math">\(A^*A\)</span> has every entry equal to <span class="math">\(2\)</span>, so its eigenvalues are <span class="math">\(4\)</span> and <span class="math">\(0\)</span>, and the remaining eigenvalue is <span class="math">\(\varepsilon^2\)</span>.</p>
+<h2 id="two-independent-changes-of-coordinates-l75-0031">Two independent changes of coordinates (<a href="https://www.youtube.com/watch?v=15E5p2M_uv4&amp;t=31s">L75 00:31</a>)</h2>
+<p>The <strong>singular value decomposition</strong> is <span class="math">\(A=U\Sigma V^*\)</span> with unitary <span class="math">\(U\)</span> of order <span class="math">\(m\)</span> and unitary <span class="math">\(V\)</span> of order <span class="math">\(n\)</span>. A unitary matrix has orthonormal columns and inverse equal to its adjoint. The rectangular <span class="math">\(m\)</span>-by-<span class="math">\(n\)</span> matrix <span class="math">\(\Sigma\)</span> has <span class="math">\(\sigma_j\)</span> in diagonal positions <span class="math">\(j\leq p\)</span> and zeros elsewhere. The two coordinate systems may have different dimensions.</p>
+<p>One construction uses the Hermitian spectral theorem from <a href="ch12.html">Chapter 12</a>. Choose an orthonormal eigenbasis <span class="math">\(v_1,\dots,v_n\)</span> of <span class="math">\(A^*A\)</span> ordered by decreasing eigenvalue. For every <span class="math">\(\sigma_j&gt;0\)</span> set <span class="math">\(u_j=Av_j/\sigma_j\)</span>. Then</p>
+<div class="equation">\[u_i^*u_j=\frac{v_i^*A^*Av_j}{\sigma_i\sigma_j}
+=\frac{\sigma_j^2}{\sigma_i\sigma_j}v_i^*v_j.\]</div>
+
+<p>For positive singular values this equals one when <span class="math">\(i=j\)</span> and zero otherwise. If <span class="math">\(A^*Av_j=0\)</span>, then the squared norm of <span class="math">\(Av_j\)</span> vanishes, so <span class="math">\(Av_j=0\)</span>. Complete the nonzero-image vectors <span class="math">\(u_j\)</span> to an orthonormal basis of the output space, for example by Gram–Schmidt. The matrices <span class="math">\(U\)</span> and <span class="math">\(V\)</span> with these ordered columns satisfy <span class="math">\(AV=U\Sigma\)</span> column by column. Multiplication by <span class="math">\(V^*\)</span> gives the factorization, including the case <span class="math">\(A=0\)</span>.</p>
+<p>The construction proves existence. A numerical SVD typically works from the entries of <span class="math">\(A\)</span> directly by unitary reduction to bidiagonal form, followed by the SVD of the smaller banded problem. This avoids explicitly forming the Gram matrix <span class="math">\(A^*A\)</span>, where the ratio of the largest to smallest positive eigenvalues is the square of the corresponding singular-value ratio. <a href="https://www.netlib.org/lapack/lug/node53.html">LAPACK Users’ Guide, Singular Value Decomposition</a></p>
+<h2 id="the-partition-reveals-four-subspaces-l76-0200">The partition reveals four subspaces (<a href="https://www.youtube.com/watch?v=hy_2HezdzQo&amp;t=120s">L76 02:00</a>)</h2>
+<p>Let <span class="math">\(r\)</span> be the number of strictly positive singular values. Write <span class="math">\(U=(U_1\ U_2)\)</span> and <span class="math">\(V=(V_1\ V_2)\)</span>, with <span class="math">\(r\)</span> columns in each leading block. Set <span class="math">\(D=\operatorname{diag}(\sigma_1,\dots,\sigma_r)\)</span>. The compact decomposition is <span class="math">\(A=U_1DV_1^*\)</span>. The product sends each <span class="math">\(v_j\)</span> in <span class="math">\(V_1\)</span> to <span class="math">\(\sigma_ju_j\)</span>, which spans the range as <span class="math">\(j\)</span> varies. Vectors in <span class="math">\(V_2\)</span> go to zero. The adjoint factorization swaps the roles of <span class="math">\(U\)</span> and <span class="math">\(V\)</span>. In particular <span class="math">\(A^*u_j=\sigma_jv_j\)</span> for every positive gain, so <span class="math">\(AA^*u_j=\sigma_j^2u_j\)</span> and <span class="math">\(AA^*\)</span> vanishes on the span of <span class="math">\(U_2\)</span>. Together these observations prove that <span class="math">\(r=\operatorname{rank}A\)</span> and identify four orthonormal bases.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Space</th>
+<th>Basis columns</th>
+<th>Calibration meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math">\(\mathcal R(A)\)</span></td>
+<td><span class="math">\(U_1\)</span></td>
+<td>Output sum and weak reading</td>
+</tr>
+<tr>
+<td><span class="math">\(\ker A^*\)</span></td>
+<td><span class="math">\(U_2\)</span></td>
+<td>Disagreement between duplicate readings and the fourth channel</td>
+</tr>
+<tr>
+<td><span class="math">\(\mathcal R(A^*)\)</span></td>
+<td><span class="math">\(V_1\)</span></td>
+<td>Input sum and weak actuator</td>
+</tr>
+<tr>
+<td><span class="math">\(\ker A\)</span></td>
+<td><span class="math">\(V_2\)</span></td>
+<td>Invisible change in input contrast</td>
+</tr>
+</tbody>
+</table></div>
+<p>For any prescribed output <span class="math">\(b\)</span>, the equation <span class="math">\(Ax=b\)</span> becomes <span class="math">\(\Sigma V^*x=U^*b\)</span>. Thus an exact solution exists precisely when <span class="math">\(U_2^*b=0\)</span>. In that case every solution has the form <span class="math">\(V_1 D^{-1}U_1^*b+V_2z\)</span>, with <span class="math">\(z\)</span> arbitrary. Every solution has the same observable part. The hidden component alters the command without affecting any predicted reading.</p>
+<h2 id="gains-conditioning-and-discarding-a-direction-l77-0500">Gains, conditioning, and discarding a direction (<a href="https://www.youtube.com/watch?v=dZbuA6P_WvE&amp;t=300s">L77 05:00</a>)</h2>
+<p>For a vector <span class="math">\(x\)</span>, set <span class="math">\(c=V^*x\)</span>. Unitary matrices preserve lengths, so</p>
+<div class="equation">\[\|Ax\|_2^2=\sum_{j=1}^r\sigma_j^2|c_j|^2,
+\qquad \|x\|_2^2=\sum_{j=1}^n |c_j|^2.\]</div>
+
+<p>The induced Euclidean norm <span class="math">\(\|A\|_2=\max_{\|x\|_2=1}\|Ax\|_2\)</span> is therefore <span class="math">\(\sigma_1\)</span>, attained at <span class="math">\(v_1\)</span>. For square invertible <span class="math">\(A\)</span>, the inverse has singular values given by the reciprocals in reverse order, so the condition number <span class="math">\(\|A\|_2\|A^{-1}\|_2\)</span> is <span class="math">\(\sigma_1/\sigma_n\)</span>. For the rectangular calibration array the inverse is defined only between the observable input and attainable output spaces. On those spaces the ratio is <span class="math">\(2/\varepsilon\)</span>, and unit error in the weak reading produces an error of <span class="math">\(1/\varepsilon\)</span> in the inferred actuator.</p>
+<p>The same coordinates describe output geometry. On the observable input subspace the unit sphere maps to an ellipsoid surface whose semiaxes have lengths <span class="math">\(\sigma_j\)</span>. If the kernel is nonzero, the image of the full unit sphere fills that ellipsoid, since adding a kernel component can increase the input length to one without changing the output. If <span class="math">\(r=0\)</span>, the image consists of zero.</p>
+<figure>
+<img src="../assets/svd-ellipse.png" width="1140" height="570" alt="Filled ellipse with horizontal semiaxis 2 and vertical semiaxis 0.02 on an expanded vertical axis.">
+<figcaption>The image of the full unit sphere fills the ellipse for the calibration array. The two axes use different scales to expose the weak gain.</figcaption>
+</figure>
+
+<p><a href="https://www.youtube.com/watch?v=dZbuA6P_WvE&amp;t=1350s">L77 22:30</a></p>
+<p>For a lower-rank approximation, let <span class="math">\(A_k=\sum_{j=1}^k\sigma_j u_jv_j^*\)</span> with <span class="math">\(0\leq k&lt;r\)</span>. The singular values of the omitted terms show that <span class="math">\(\|A-A_k\|_2=\sigma_{k+1}\)</span>. Every matrix <span class="math">\(B\)</span> of rank at most <span class="math">\(k\)</span> vanishes on some unit vector in the span of the first <span class="math">\(k+1\)</span> right singular vectors, since the restriction to that subspace has rank at most <span class="math">\(k\)</span>. For this vector <span class="math">\(\|(A-B)x\|_2=\|Ax\|_2\geq \sigma_{k+1}\)</span>. The truncated SVD is therefore optimal in induced Euclidean norm. In the calibration array its best rank-one truncation has error <span class="math">\(\varepsilon\)</span>. A truncation changes the model's effective rank and intentionally suppresses a real response.</p>
+<h2 id="laboratory">Laboratory</h2>
+<p>Run <a href="../code/ch19.py">the SVD experiment</a> with no input files. It uses <span class="math">\(\varepsilon=0.02\)</span>, checks reconstruction from the two positive singular terms and checks both null spaces, and prints two nonzero gains <span class="math">\(2\)</span> and <span class="math">\(0.02\)</span>. It verifies rank-one error <span class="math">\(0.02\)</span> and observable gain ratio <span class="math">\(100\)</span>. It compares subspaces by an orthogonal projection so that arbitrary basis signs and rotations do not change the check.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<h3 id="squaring-gains">Squaring gains</h3>
+<p><strong>Problem.</strong> Find the singular values of the row <span class="math">\((3,4)\)</span> and give a unit right singular vector for the nonzero value.</p>
+<p><strong>Solution.</strong> Its Gram matrix is the outer product of <span class="math">\((3,4)^T\)</span> with itself. It acts on this vector by multiplication by <span class="math">\(3^2+4^2=25\)</span> and vanishes on the orthogonal direction. There is one listed singular value because <span class="math">\(p=1\)</span>. Its value is <span class="math">\(5\)</span>, and one right singular vector is <span class="math">\((3,4)^T/5\)</span>.</p>
+<h3 id="detect-inconsistent-data">Detect inconsistent data</h3>
+<p><strong>Problem.</strong> Can the calibration array produce <span class="math">\(b=(1,2,0,0)^T\)</span> exactly?</p>
+<p><strong>Solution.</strong> No. The unit output direction <span class="math">\((1,-1,0,0)^T/\sqrt2\)</span> lies in <span class="math">\(\ker A^*\)</span>. Its inner product with <span class="math">\(b\)</span> is <span class="math">\(-1/\sqrt2\)</span> and its inner product with every <span class="math">\(Ax\)</span> is zero.</p>
+<h3 id="adjust-the-observable-basis">Adjust the observable basis</h3>
+<p><strong>Problem.</strong> If two positive singular values agree, explain how to rotate their right singular vectors while maintaining the SVD.</p>
+<p><strong>Solution.</strong> Let the two pairs be the columns of <span class="math">\(U_J,V_J\)</span> with common value <span class="math">\(\sigma\)</span>. For any <span class="math">\(2\)</span>-by-<span class="math">\(2\)</span> unitary <span class="math">\(W\)</span>, replace them with <span class="math">\(U_JW,V_JW\)</span>. The contribution becomes <span class="math">\((U_JW)\sigma I_2(V_JW)^*=\sigma U_JWW^*V_J^*=\sigma U_JV_J^*\)</span>. Each rotated pair remains orthonormal.</p>
+<h3 id="separate-operator-error-from-inverse-error">Separate operator error from inverse error</h3>
+<p><strong>Problem.</strong> Drop the weak singular direction from the calibration model. Compare the response error on <span class="math">\(x=(0,0,1)^T\)</span> with the command error if the truncated model reconstructs a zero weak actuator.</p>
+<p><strong>Solution.</strong> The command has only the omitted direction, so the discarded output is <span class="math">\((0,0,\varepsilon,0)^T\)</span> and has length <span class="math">\(\varepsilon\)</span>. Setting the reconstructed coordinate to zero changes the command by one. Small operator approximation error does not bound the error in an inverse solution along a weak direction.</p><nav class="chapter-nav" aria-label="Chapter order"><a href="../chapters/ch18.html">← Previous chapter</a><a href="../chapters/ch20.html">Next chapter →</a></nav></main>
+<footer>Independent study edition · <a href="https://nptel.ac.in/courses/111108157">NPTEL course</a></footer>
+</body>
+</html>

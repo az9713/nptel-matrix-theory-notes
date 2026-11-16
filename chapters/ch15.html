@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Hermitian matrices and Rayleigh–Ritz · Matrix Theory</title>
+<link rel="stylesheet" href="../assets/reader.css">
+<script defer src="../assets/math-config.js"></script><script defer src="../assets/mathjax-tex-svg.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="../index.html">Matrix Theory</a>
+  <nav aria-label="Reader"><a href="../index.html">Chapters</a><a href="../study-guide.html">Study guide</a><a href="../source-map.html">Lectures</a><a href="../laboratory.html">Labs</a></nav>
+</header>
+<main id="main" class="reading"><p class="context">Chapter 15 · <a href="../source-map.html#l57">Lectures 57–60</a></p><h1>Hermitian matrices and Rayleigh–Ritz</h1><nav class="recordings" aria-label="Source recordings"><a href="https://www.youtube.com/watch?v=OWBlT_w0awY">L57</a> <a href="https://www.youtube.com/watch?v=izcaXw_WAtw">L58</a> <a href="https://www.youtube.com/watch?v=f8CQBav1R6E">L59</a> <a href="https://www.youtube.com/watch?v=AmDxlz8KMas">L60</a></nav><p>A vibration model for two coupled actuators must pass a minimum stiffness requirement in every unit displacement direction. Measuring the energy of the two individual actuator commands misses a third possibility: a collective displacement that costs less than either command on its own.</p>
+<p>Use dimensionless coordinates and normalized masses. For a real displacement <span class="math">\(x=(x_1,x_2)^T\)</span>, the modeled energy is</p>
+<div class="equation">\[f(x)=\tfrac12\bigl(2x_1^2+4x_2^2+(x_1-x_2)^2\bigr).\]</div>
+
+<p>The release criterion is that <span class="math">\(2f(x)\)</span> exceed <span class="math">\(3\)</span> for every unit displacement. The test is about the model's worst direction. The model omits damping and assumes the spring law remains linear over the displacements of interest.</p>
+<div class="toc">
+<ul>
+<li><a href="#how-symmetric-matrices-arise">How symmetric matrices arise</a></li>
+<li><a href="#an-orthonormal-basis-of-modes">An orthonormal basis of modes</a></li>
+<li><a href="#rayleighritz-and-a-residual-check">Rayleigh–Ritz and a residual check</a></li>
+<li><a href="#restricting-the-search">Restricting the search</a></li>
+<li><a href="#laboratory">Laboratory</a></li>
+<li><a href="#exercises-and-solutions">Exercises and solutions</a></li>
+<li><a href="#sources">Sources</a></li>
+</ul>
+</div>
+<h2 id="how-symmetric-matrices-arise">How symmetric matrices arise</h2>
+<p><a href="https://www.youtube.com/watch?v=OWBlT_w0awY&amp;t=51s">L57 00:51</a> · <a href="https://www.youtube.com/watch?v=OWBlT_w0awY&amp;t=422s">L57 07:02</a></p>
+<p>For a twice continuously differentiable real energy function, the Hessian has entries <span class="math">\(h_{ij}=\partial^2 f/\partial x_i\partial x_j\)</span>. Equality of mixed partial derivatives gives <span class="math">\(H=H^T\)</span>. Here the Hessian is constant and <span class="math">\(2f(x)=x^THx\)</span> with</p>
+<div class="equation">\[H=\begin{pmatrix}3&amp;-1\\-1&amp;5\end{pmatrix}.\]</div>
+
+<p>The coupling spring contributes the symmetric term <span class="math">\((e_1-e_2)(e_1-e_2)^T\)</span>, where <span class="math">\(e_j\)</span> is coordinate vector <span class="math">\(j\)</span>. In a network, the adjacency matrix of an undirected graph is symmetric because an edge between <span class="math">\(i\)</span> and <span class="math">\(j\)</span> is a relation in both directions. A weighted spring network yields another symmetric matrix by summing one such coupling term per edge.</p>
+<p>For complex vectors the corresponding definition uses the adjoint <span class="math">\(H^*=\overline H^T\)</span>. A matrix with <span class="math">\(H^*=H\)</span> is <strong>Hermitian</strong>. Each diagonal entry is real. In the quadratic form <span class="math">\(x^*Hx\)</span>, off-diagonal entries pair as conjugates, so their sum is real too. Conversely, if <span class="math">\(x^*Ax\)</span> is real for every complex <span class="math">\(x\)</span>, then <span class="math">\(x^*(A-A^*)x=0\)</span>. Writing <span class="math">\(M=A-A^*\)</span>, testing <span class="math">\(e_i\)</span> gives <span class="math">\(m_{ii}=0\)</span>. Testing <span class="math">\(e_i+e_j\)</span> gives <span class="math">\(m_{ij}+m_{ji}=0\)</span> and testing <span class="math">\(e_i+i e_j\)</span> gives <span class="math">\(i(m_{ij}-m_{ji})=0\)</span>. Thus <span class="math">\(A=A^*\)</span>. The complex tests matter. Over the reals, the form of any real matrix equals the form of its symmetric part because the skew-symmetric part contributes zero.</p>
+<h2 id="an-orthonormal-basis-of-modes">An orthonormal basis of modes</h2>
+<p><a href="https://www.youtube.com/watch?v=izcaXw_WAtw&amp;t=60s">L58 01:00</a> · <a href="https://www.youtube.com/watch?v=izcaXw_WAtw&amp;t=1689s">L58 28:09</a></p>
+<p>Every square complex <span class="math">\(A\)</span> decomposes as <span class="math">\((A+A^*)/2+(A-A^*)/2\)</span>, a Hermitian part and a skew-Hermitian part (a matrix <span class="math">\(K\)</span> with <span class="math">\(K^*=-K\)</span>). The adjoint reverses product order. Therefore <span class="math">\(AB\)</span> is Hermitian for Hermitian <span class="math">\(A,B\)</span> precisely when <span class="math">\(AB=BA\)</span>. For any rectangular matrix <span class="math">\(C\)</span>, <span class="math">\(C^*C\)</span> is Hermitian with <span class="math">\(x^*C^*Cx=\|Cx\|_2^2\ge 0\)</span>, where <span class="math">\(\|x\|_2=\sqrt{x^*x}\)</span>.</p>
+<p><strong>Spectral theorem.</strong> A complex Hermitian matrix admits a factorization <span class="math">\(H=U\Lambda U^*\)</span> with <span class="math">\(U^*U=I_n\)</span> and <span class="math">\(\Lambda\)</span> real diagonal. A real symmetric matrix admits such a factorization with real <span class="math">\(U\)</span>.</p>
+<p>For a nonzero eigenvector <span class="math">\(u\)</span> with <span class="math">\(Hu=\lambda u\)</span>, we have <span class="math">\(\lambda=(u^*Hu)/(u^*u)\in\mathbb R\)</span>. Existence of a complex eigenvalue follows from the characteristic polynomial. Normalize <span class="math">\(u\)</span> to unit length. For any <span class="math">\(v\)</span> perpendicular to <span class="math">\(u\)</span>, <span class="math">\(u^*Hv=(Hu)^*v=\lambda u^*v=0\)</span>, so its orthogonal complement is invariant. The restriction remains Hermitian. Induction on the dimension supplies an orthonormal eigenbasis, including when an eigenvalue repeats. In the real symmetric case, since the eigenvalue is real, the real or imaginary part of a complex eigenvector supplies a nonzero real eigenvector. The same induction works in the real orthogonal complement. Conversely a factorization of the stated form gives <span class="math">\(H^*=H\)</span> by taking adjoints.</p>
+<p>A matrix is <strong>normal</strong> if <span class="math">\(A^*A=AA^*\)</span>. Every Hermitian matrix is normal. Conversely, by the unitary diagonalization theorem for normal matrices, a normal matrix with real eigenvalues has a unitary factorization with a real diagonal and is Hermitian. Reality of the spectrum alone is insufficient: <span class="math">\(\begin{pmatrix}1&amp;1\\0&amp;2\end{pmatrix}\)</span> has real eigenvalues <span class="math">\(1,2\)</span> and unequal off-diagonal entries.</p>
+<p>The actuator eigenvalues solve <span class="math">\((3-\lambda)(5-\lambda)-1=0\)</span>, giving <span class="math">\(4\pm\sqrt2\)</span>. For the smaller eigenvalue the equation in the first row gives <span class="math">\(x_2=(\sqrt2-1)x_1\)</span>. Both actuators move in the same direction while the softer actuator moves farther. The two coordinate experiments report <span class="math">\(3\)</span> and <span class="math">\(5\)</span>. The soft mode gives approximately <span class="math">\(2.586\)</span>, so the model fails the requirement.</p>
+<h2 id="rayleighritz-and-a-residual-check">Rayleigh–Ritz and a residual check</h2>
+<p><a href="https://www.youtube.com/watch?v=f8CQBav1R6E&amp;t=120s">L59 02:00</a></p>
+<p>For nonzero <span class="math">\(x\)</span> define the Rayleigh quotient <span class="math">\(R_H(x)=x^*Hx/(x^*x)\)</span>. Write eigenvalues in <strong>descending</strong> order <span class="math">\(\lambda_1\ge\cdots\ge\lambda_n\)</span>, reversing the lecture indexing. With <span class="math">\(c=U^*x\)</span>, spectral coordinates give</p>
+<div class="equation">\[R_H(x)=\sum_{j=1}^n\lambda_j\frac{|c_j|^2}{\sum_i |c_i|^2}.\]</div>
+
+<p>The nonnegative weights sum to one, so <span class="math">\(R_H(x)\)</span> lies between <span class="math">\(\lambda_n\)</span> and <span class="math">\(\lambda_1\)</span>. Either endpoint is attained exactly by the nonzero vectors in the corresponding eigenspace, since all coefficients with a different eigenvalue must vanish at equality. In particular, a unit vector with <span class="math">\(R_H(x)\le 3\)</span> refutes the strict actuator requirement. The unit direction of <span class="math">\((1,\tfrac12)^T\)</span> has quotient <span class="math">\(2.6\)</span>.</p>
+<p>The smallest and largest eigenvalues bound the measured quotient, with equality allowed. Approximate modes need an additional test. For any nonzero <span class="math">\(x\)</span> and real <span class="math">\(\rho\)</span>, the residual <span class="math">\(r=Hx-\rho x\)</span> satisfies</p>
+<div class="equation">\[\frac{\|r\|_2^2}{\|x\|_2^2}
+=\frac{\sum_j(\lambda_j-\rho)^2|c_j|^2}{\sum_j|c_j|^2}
+\ge \min_j|\lambda_j-\rho|^2 .\]</div>
+
+<p>For the trial vector above and <span class="math">\(\rho=2.6\)</span>, the relative residual <span class="math">\(\|r\|_2/\|x\|_2\)</span> is <span class="math">\(0.2\)</span>. It certifies an eigenvalue within <span class="math">\(0.2\)</span> of the observed quotient. If we know all other eigenvalues are at distance at least <span class="math">\(g&gt;0\)</span> from <span class="math">\(\rho\)</span>, the same sum bounds the squared fraction of <span class="math">\(x\)</span> in their eigenspaces by <span class="math">\(\|r\|_2^2/(g^2\|x\|_2^2)\)</span>. A tight cluster can leave the direction of any one eigenvector poorly determined even when the residual is small.</p>
+<h2 id="restricting-the-search">Restricting the search</h2>
+<p><a href="https://www.youtube.com/watch?v=AmDxlz8KMas&amp;t=1680s">L60 28:00</a></p>
+<p><a href="https://www.youtube.com/watch?v=AmDxlz8KMas&amp;t=763s">L60 12:43</a></p>
+<p>More generally, maximizing over <span class="math">\(x\perp u_1,\ldots,u_{k-1}\)</span> gives <span class="math">\(\lambda_k\)</span>, attained by <span class="math">\(u_k\)</span>. Minimizing over <span class="math">\(x\perp u_{k+1},\ldots,u_n\)</span> also gives <span class="math">\(\lambda_k\)</span>. These constrained problems assume access to the indicated modes. An alternative chooses the constraint itself as part of the optimization.</p>
+<p>For <span class="math">\(n\geq 2\)</span>, removing known modes restricts the weights in the Rayleigh quotient. Maximizing over <span class="math">\(x\perp u_1\)</span> gives <span class="math">\(\lambda_2\)</span> because the first weight is zero and <span class="math">\(u_2\)</span> attains the largest remaining value. To see why a clever alternate constraint cannot reduce this maximum further, take any hyperplane <span class="math">\(W\)</span> of allowable vectors. The intersection of <span class="math">\(W\)</span> with <span class="math">\(\operatorname{span}(u_1,u_2)\)</span> has dimension at least one. For a nonzero vector in that intersection, the quotient is at least <span class="math">\(\lambda_2\)</span>. Therefore the minimum, over all hyperplanes, of the maximum quotient is <span class="math">\(\lambda_2\)</span>. This conclusion remains true when the top eigenvalue has multiplicity greater than one. In the actuator model a hyperplane is a line, and the best such line is the soft mode. The argument generalizes to every index in <a href="ch16.html">Courant–Fischer</a>.</p>
+<h2 id="laboratory">Laboratory</h2>
+<p>Run <a href="../code/ch15.py">ch15.py</a> with Python and NumPy. It checks the two exact actuator eigenvalues, the trial quotient and its residual, and a complex Hermitian matrix with the same mode energies. Its complex example applies a unitary change of phase to the second coordinate and checks the eigendecomposition. The printed residual pertains to the trial vector in the model. Floating-point agreement to an absolute tolerance supplies a check on this small, dimensionless fixture.</p>
+<h2 id="exercises-and-solutions">Exercises and solutions</h2>
+<h3 id="a-recover-the-coupled-stiffness">A. Recover the coupled stiffness</h3>
+<p>Derive the Hessian from the three spring contributions. Then find the worst stiffness when the coupling spring is removed.</p>
+<p><strong>Solution.</strong> The uncoupled Hessian is <span class="math">\(\operatorname{diag}(2,4)\)</span>. Let <span class="math">\(v=(1,-1)^T\)</span>. The last square contributes the outer product <span class="math">\(vv^T\)</span> to the Hessian, giving the matrix used above. With the coupling removed the energy quotient is a weighted average of <span class="math">\(2\)</span> and <span class="math">\(4\)</span>, so the smallest value is <span class="math">\(2\)</span> on the first coordinate axis.</p>
+<h3 id="b-find-a-soft-integer-direction">B. Find a soft integer direction</h3>
+<p>Find an integer command with both entries positive and quotient below <span class="math">\(2.7\)</span>.</p>
+<p><strong>Solution.</strong> Scaling preserves the quotient. Use <span class="math">\((2,1)^T\)</span>. The numerator is <span class="math">\(3\cdot4-4+5=13\)</span>, the denominator is <span class="math">\(5\)</span>, and <span class="math">\(13/5=2.6\)</span>.</p>
+<h3 id="c-complex-phase-and-energy">C. Complex phase and energy</h3>
+<p>Put <span class="math">\(D=\operatorname{diag}(1,i)\)</span> and <span class="math">\(G=DHD^*\)</span>. Find the off-diagonal entries of <span class="math">\(G\)</span> and one soft mode from an old soft mode <span class="math">\(x\)</span>.</p>
+<p><strong>Solution.</strong> The entries are <span class="math">\(g_{12}=i\)</span> and <span class="math">\(g_{21}=-i\)</span>. Since <span class="math">\(D^*D=I_2\)</span>, <span class="math">\(G(Dx)=D(Hx)\)</span>. Thus <span class="math">\(Dx\)</span> is a soft eigenvector with the same eigenvalue. The real-coordinate quotient bounds extend directly to this Hermitian phase convention.</p>
+<h3 id="d-a-quotient-inside-a-gap">D. A quotient inside a gap</h3>
+<p>Find a unit vector with quotient exactly <span class="math">\(4\)</span>. Does the value certify a mode at <span class="math">\(4\)</span>?</p>
+<p><strong>Solution.</strong> If <span class="math">\(u_1,u_2\)</span> are normalized eigenvectors, <span class="math">\((u_1+u_2)/\sqrt2\)</span> gives weight <span class="math">\(1/2\)</span> to each eigenvalue. Its quotient is <span class="math">\(4\)</span>. The residual norm at that value is <span class="math">\(\sqrt2\)</span>, the distance from <span class="math">\(4\)</span> to either eigenvalue. The quotient records the mean of mode stiffnesses for this input.</p>
+<h3 id="e-a-repeated-eigenvalue">E. A repeated eigenvalue</h3>
+<p>For <span class="math">\(H=\operatorname{diag}(6,6,1)\)</span>, what is the smallest possible maximum quotient after imposing one homogeneous orthogonality constraint?</p>
+<p><strong>Solution.</strong> The allowed plane intersects the two-dimensional eigenvalue-<span class="math">\(6\)</span> subspace in at least a line. The quotient equals <span class="math">\(6\)</span> on that line and is at most <span class="math">\(6\)</span> everywhere. Thus every such plane gives maximum <span class="math">\(6\)</span>. One constraint cannot remove a mode of multiplicity two.</p>
+<h2 id="sources">Sources</h2>
+<p>The lecture anchors were checked against normalized automatic-caption cues. The proofs, actuator model, and residual check are developed here independently. The <a href="https://ece.iisc.ac.in/~cmurthy/e2-212-matrix-theory-video-lectures-and-notes-2/">instructor's IISc companion notes, session 28</a> cover Hermitian matrices and the Rayleigh–Ritz theorem in their separate session numbering.</p><nav class="chapter-nav" aria-label="Chapter order"><a href="../chapters/ch14.html">← Previous chapter</a><a href="../chapters/ch16.html">Next chapter →</a></nav></main>
+<footer>Independent study edition · <a href="https://nptel.ac.in/courses/111108157">NPTEL course</a></footer>
+</body>
+</html>

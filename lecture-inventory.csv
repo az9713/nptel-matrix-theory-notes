@@ -1,0 +1,81 @@
+lecture,video_id,duration_seconds,title,source_basis,caption_track,caption_end_seconds,caption_sha256
+1,jqU0q21PHEQ,1735,Course introduction and properties of matrices,Playlist and English captions,en-orig,1736.099,12f058464e20c19ca118bc8d57db098458127eb2e462fb2b4c79c2a25ff6ffac
+2,sKQtUYfEHII,1714,Vector spaces,Playlist and English captions,en-orig,1715.559,8a4743105927897f112157d776ccc5a27ba9238f9887cb651de15c3bbd7d0a5f
+3,ZGmJnG7DGR4,1860,"Basis, dimension",Playlist and English captions,en-orig,1861.519,46a61ab13ea16168acbcc6e4d477c964013db9852afa0eedd4482a7d7d8fa4b3
+4,yoTWRBC_dg8,1476,Linear transforms,Playlist and English captions,en-orig,1477.089,b6d8747d3dab874c006ea9490bb10dfe2842ad8176ffa9d46d00927d643827a8
+5,vLaDX3nRgok,1603,Fundamental subspaces of a matrix,Playlist and English captions,en-orig,1604.019,4d9246dfc8ac61a1fa09bb3615a51b5db94744abd54ac23b1e082b8e7f4aaea9
+6,ezt2QGeNlnw,996,Fundamental theorem of linear algebra,Playlist and English captions,en-orig,997.270,dbef18365b7ae5b54c4bd8b4399a5811c9fbabf30242e19f3e381fca451a007f
+7,VRkzg59ua2w,1350,Properties of rank,Playlist and English captions,en-orig,1350.769,07200ef91a21385b9e623e65e51d21b3d8d686285c5926f2a0397b40424c89ef
+8,CLE8NpJOGOI,1518,Inner product,Playlist and English captions,en-orig,1519.459,0eb2eaf662f31288f30a5c8640c9cafdcd7a7d1def30aab317fde0105bc08877
+9,K_AOn_zwM-o,1273,"Gram-schmidt algorithm,",Playlist and English captions,en-orig,1274.480,0d721acfe114d1e6366daf9fb29ab5879ecd350240d91f65fb50c93694827123
+10,J-BCvUALQyQ,2219,Orthonormal matrices definition,Playlist and English captions,en-orig,2220.160,a3f7bd18d90509511fd4a33d6c9acfd3561b9e574cf94e876250c803d75899ef
+11,fnGngke4g_s,3200,Determinant,Playlist and English captions,en-orig,3201.619,fdf82e6db95baccb9381ae0d8df49b408e5b21c16dce79362ff4c22b8f3bb6d9
+12,YY0lV8_HnTY,1581,Properties of determinants,Playlist and English captions,en-orig,1582.000,b1a3c59811dfa96305481e6f8db65d041fd8c2bfb5fca16d96a93bb37d65b593
+13,iA7MnBhkXvQ,1249,Introduction to norms and inner products,Playlist and English captions,en-orig,1250.539,94610bfae3064919219cff8e93d3daf7e699bb5caeb7b0421c4d7a01032cdfe2
+14,3XOM2g53bNI,1754,Vector norms and their properties,Playlist and English captions,en-orig,1755.119,57639b60464691e8485ceb6a7ec4e349b09fa323e378d296a5b17a39f6db11cc
+15,UkYKyelb5Wc,1818,Applications and equivalence of vector norms,Playlist and English captions,en-orig,1819.759,a13007f06ae8ef74d967f570c4230664614e41dbc4a041966fa57685f2968818
+16,TWHfGPyHyAI,133,Summary of equivalence of norms,Playlist and English captions,en-orig,134.840,34a64f25a612aa9332feebf4165c4554df2d64e7a4fc7cf3c7771031d17c4a8a
+17,XO-AvBcgzZE,857,Dual norms,Playlist and English captions,en-orig,858.259,049fc0957fd1b1b233c74f43036be6b8c44ab3af2386fd92d57e79804b0574de
+18,AsG6Jr09LgU,1664,Properties and examples of dual norms,Playlist and English captions,en-orig,1665.650,6b741b2a0e9d4f36a6a7b1350d64196b45e5dc7ea1e7a7ee09489c3f8e37c960
+19,L2uVbIbmIJE,914,Matrix norms,Playlist and English captions,en-orig,915.019,1d2d015acbaca6955ec0bc3d5b1d00176383bd53d446bdeee7c32c1f628007cc
+20,Z8csIEkecBo,1572,Matrix norms: Properties,Playlist and English captions,en-orig,1572.890,d86628266a0758ab3fecc7a941eb8dc072a09653703c259219e5ca4d3ee65cff
+21,hgpgZb961to,2260,Induced norms,Playlist and English captions,en-orig,2261.280,25d23573a83ecc92f87a8c18c509310ab369f4dfe362a5440aecfdafea854541
+22,WZifkIcENlo,1403,Induced norms and examples,Playlist and English captions,en-orig,1404.630,2c10e0a34380acf91895345bc3f6c52a429b0e65760f213b92764e80c94a5a9d
+23,Am_nmqS7SPs,2022,Spectral radius,Playlist and English captions,en-orig,2023.720,d0700ffea09732672dfc8d716e8a22204cf1317358b3d8f96decc42d23b5b744
+24,xTPi795hK1w,1220,Properties of spectral radius,Playlist and English captions,en-orig,1221.559,efae1736166b4d3dce9dfe8182a405892c0ad4214ef57e1fc553a81b1facab52
+25,PVGeabmeLDQ,2349,"Convergent matrices, Banach lemma",Playlist and English captions,en-orig,2350.319,1a8f1a5e067d290a030693f292084c70c11962480da0339447dd4be652c21fe9
+26,WsO_s8dNfVI,1696,Recap of matrix norms and Levy-Desplanques theorem,Playlist and English captions,en-orig,1697.799,6a679ec9f66d4171922e30b3e9008357de96505fbc394c1899496d7c9cfb1225
+27,hxi95z6i7j4,1600,Equivalence of matrix norms and error in inverses of linear systems,Playlist and English captions,en-orig,1600.880,98f524623f1dac59d64968f2d975c3a9957d77fcc39f5972d4f598032fff2f59
+28,uE0eUFgvn5k,1349,Errors in inverses of matrices,Playlist and English captions,en-orig,1350.520,5a02e5dfc10af3a15c565245bd51285158eb04dc79f2f53d2a939e2fd5729ad2
+29,oe-TgY48Goc,2351,Errors in solving systems of linear equations,Playlist and English captions,en-orig,2352.460,ba390fe76af1353800a028062a85f85b8e42e1fb7d16519eaefa3445e7a507f9
+30,mqHT80h8GnQ,1655,Introduction to eigenvalues and eigenvectors,Playlist and English captions,en-orig,1655.849,ab70d820007f5de90f3f3c6dee8da3309c9b54312f624cb1b527b1ecccd62a39
+31,uaqTfSm2huU,1222,The characteristic polynomial,Playlist and English captions,en-orig,1223.039,598fea0d268b72d1d8cf321424e6a199e99cf2a605ecb160d324018ef8087f84
+32,S-yu9Gw7L38,835,"Solving characteristic polynomials, eigenvectors properties",Playlist and English captions,en-orig,836.070,bff95243576edc505b316cdbbb9d3fbc2ac4a0089c1c0dc0293faf2818322552
+33,t6ryEdhnwoU,1988,Similarity,Playlist and English captions,en-orig,1988.799,0d7c35ac2f5aa3ecbedf5264b5e63de6138353252665cfe6b91dafa17114d4f8
+34,RQCHPP1I7Oo,1425,Diagonalization,Playlist and English captions,en-orig,1426.289,df005b7053b46e8756908f36180746c560d75b76ed8a1a671fcda1ff145ee1e8
+35,DtDJZEMSojA,1465,Relationship between eigenvalues of BA and AB,Playlist and English captions,en-orig,1466.720,cb7dda66707da2dcb269c60b9948c353d6430bd81a4285c901e0a6470ea8174a
+36,LYCqbKah9K0,1945,Eigenvector and principle of biorthogonality,Playlist and English captions,en-orig,1946.390,71b479a05b195ffd392bb99de20cb51fb2e39586b5e889b3ae6706665110f79c
+37,uMK1KndLy-Q,660,Unitary matrices,Playlist and English captions,en-orig,661.240,b1c24fc35c03059882ea3a62dd882745da07e4cd8d746933da124cf736cce29f
+38,K8wquZLQyCA,1524,Properties of unitary matrices,Playlist and English captions,en-orig,1525.759,6d3f56c2f8db0b7c5bf9ea2d82eded0214007bcbfff649370a7d5d95d6e552a0
+39,FHcdxzKcQUQ,934,Unitary equivalence,Playlist and English captions,en-orig,934.999,44fa7688d26d7b70ff6f5b556abaef913fb685d84e6d1ffcb9cab2ff0be068ce
+40,UbDwzSnS0Y0,2649,Schur's triangularization theorem,Playlist and English captions,en-orig,2650.090,9f0f0547aac2c69b3f21f591302d4a0e91f15cc7d7e5f41301ed97ef38839b92
+41,WROFJ15hk00,795,Cayley-Hamilton theorem,Playlist and English captions,en-orig,795.980,d1a68d07d39c607d9b108c64d2ba5e8b2cdebc1edde26df8a3a91bd2f2e92524
+42,hTV-BL79c6g,1702,Uses of cayley-hamilton theorem and  diagonalizability revisited,Playlist and English captions,en-orig,1703.699,731ac9409e74d5ee6761f8e64cb822a47169630b5710a77726096b35d92419c2
+43,WrgR50mKhuA,651,Normal matrices: Definition and fundamental properties,Playlist and English captions,en-orig,652.649,bc4b76c90fe83d8f33793f174acc8fbca36bbd78d90463baf2452d425c1d3b11
+44,3jztEby7SHY,1594,Fundamental properties of normal matrices,Playlist and English captions,en-orig,1595.459,6d5213ab0fa1fc8bf857ed350a0f7d16b0cabf5797be6f56a9d4f4351099920b
+45,Su3UwxTjEGQ,1694,QR decomposition and canonical forms,Playlist and English captions,en-orig,1695.269,75a17a02aa13eb35ca7c43ad355306c41be053325627f2596d35767078f0de42
+46,NSn24nt4lNU,1241,Jordan canonical form,Playlist and English captions,en-orig,1241.979,9f4e80774324a595975b80ede7b1c68c4a4a86fccf510ad0ddbc151e1f288cdc
+47,oHIhF61VlXk,2282,Determining the Jordan form of a matrix,Playlist and English captions,en-orig,2283.960,6c05eef0faf5e38b6ae7a0f1325236566b6d6b784b7679c3a173b75331e77e67
+48,4zsklutn5kU,1824,Properties of the Jordan canonical form (part 1),Playlist and English captions,en-orig,1825.189,56f4f40ac19170ee368ed92b52e3c8eb9f0cb7e6030d833bc0af5969326e2ebf
+49,Iwx_gKJj12A,1483,Properties of the Jordan canonical form (part 2),Playlist and English captions,en-orig,1483.920,6022389c4f17436c647bf75e817f8577958d1f33b4f4494f1452ba852e9617b2
+50,AaILkmlI-Vk,593,Properties of convergent matrices,Playlist and English captions,en-orig,594.320,28cb49d35e0a3d923d949bb9fad359b631194031bc1346b096eace3401a3f2db
+51,ZyGu6bDJ-Ao,1446,Polynomials and matrices,Playlist and English captions,en-orig,1447.080,7d38b1a380b4d11185c132434d5e7e6841361cd7fc067e77790fcadd44d0c60f
+52,HG112lZjSTM,872,Other canonical forms and factorization of matrices: Gaussian elimination & LU factorization,Playlist and English captions,en-orig,872.850,d7152a071da2341e3e9788c53aa1bbeebae0cfa3e8ebb3884e5b49790d32ac54
+53,obn3X5Q0sMc,3225,LU decomposition,Playlist and English captions,en-orig,3226.369,2e459544ecd3d2042ecf678b9348ee41f01948c009300b6ec61b5b28dd71b86b
+54,TFNPrK95nGo,2568,LU decomposition with pivoting,Playlist and English captions,en-orig,2568.900,f71f39621f5f8b1ab681b13b816a2e7dbe76a94aea361fc2903194242f866fa1
+55,QL7ijUeVHgo,1143,Solving pivoted system and LDM decomposition,Playlist and English captions,en-orig,1144.159,c29b4833172cbf457fe3c20ca519066a72d10a34dc4dc49975abf55cbb558e8e
+56,FGvfdCMMoEk,3044,Cholesky decomposition and  uses,Playlist and English captions,en-orig,3045.270,1cf5e8d14d4d112576aee49cd6ae0f0b80e668ef1c5a12e37c3ac49714b8dd9d
+57,OWBlT_w0awY,544,Hermitian and symmetric matrix,Playlist and English captions,en-orig,544.120,353745623f71b9c61681b9f4a9529d1ef724c373dd5fe7af42dfec5db5eee787
+58,izcaXw_WAtw,1944,Properties of hermitian matrices,Playlist and English captions,en-orig,1945.130,1ff2be86bbdd04c017503a86071c794c95528d53a4ed084e5ee8463d3f34d442
+59,f8CQBav1R6E,1285,Variational characterization of Eigenvalues: Rayleigh-Ritz theorem,Playlist and English captions,en-orig,1286.739,3f36874790372cd4ae4adf649974f78b4dbc6458c87ec162957a7a7de7631650
+60,AmDxlz8KMas,1896,Variational characterization of eigenvalues (continued),Playlist and English captions,en-orig,1897.679,cc47c04ec6f513bec75a206932b4f3af85e53b665ea3561bb93eed6a0ea106e5
+61,sQWD4Fd_dxM,1051,Courant-Fischer theorem,Playlist and English captions,en-orig,1050.840,bd5dbc53271dae7c28479858cdd3900e57124f6f91400298a0df206c55dfa969
+62,CFdkXQtjWEA,472,Summary of Rayliegh-Ritz and Courant-Fischer theorems,Playlist and English captions,en-orig,473.120,7f8ab7333d667a6b6dd5c52635889cdc6fa54837f63ff5dd9ac793e62859399f
+63,_LiiXrvJw1A,758,Weyl's theorem,Playlist and English captions,en-orig,759.620,235137675a3c5b9d253ed689ad2447e1ee6a6f391542324525b4d036a69ada60
+64,ngkxsNTonNo,1885,"Positive semi-definite matrix, monotonicity theorem and interlacing theorems",Playlist and English captions,en-orig,1886.739,e30eab19dd481cd5b73dc1ea93e9b554b8e0e26b70263a2a8b84b9d628086607
+65,Fx7AGYFP4Mo,897,Interlacing theorem I,Playlist and English captions,en-orig,898.220,0c4a1352704977dc081cd30a92309d719986e17e96b138fd07b30bf2ab4550f9
+66,YJWyKLguyRs,2636,Interlacing theorem II (Converse),Playlist and English captions,en-orig,2636.829,c4a11e93c9cd5df4add4f96f454a457c096f460afa06641cdc1cb756cfec2fc1
+67,5YWOa3AnZxM,2162,Interlacing theorem (Continued),Playlist and English captions,en-orig,2162.849,ed561f6eebdaed90632acda5f5bdba3059b82ffd7e85661571db23ee18f815a1
+68,lxS0N8jS1HM,1291,Eigenvalues: Majorization theorem and proof,Playlist and English captions,en-orig,1291.900,b539a0fbec17065b5d02d00a31133e720d0859049658272676e2489e5fc2be95
+69,lBOxz-QjNTA,1293,Location and perturbation of Eigenvalues Part1: Dominant diagonal theorem,Playlist and English captions,en-orig,1294.449,ff0de298c6e4e0ff6da464fc44b75f7cb38b6c8c1fc52c10fa8070f878a8b9be
+70,DPo_5EzBVt0,2136,Location and perturbation of Eigenvalues Part2: Gersgorin's theorem,Playlist and English captions,en-orig,2137.409,92ee3c23f0808a2ba59add2661ddf505cee4d62382f1902a99dc923564d3854c
+71,dwwVoLrWdaA,1596,"Implications of Gersgorin disc theorem, condition of eigenvalues",Playlist and English captions,en-orig,1597.840,fa294f70ca434b71b2bd78b4aaae88d9341c035814e199565231dabbe213721a
+72,exQA_mLRAkw,1345,Condition of eigenvalues for diagonalizable matrices,Playlist and English captions,en-orig,1346.289,82aa0bd72204e1d78deac06996805008914516d0e4a247947e346931bcfa8eaa
+73,TiiXA1wUSeY,1752,Perturbation of eigenvalues Birkhoff's theorem Hoffman - Weilandt theorem,Playlist and English captions,en-orig,1753.440,326530aa319cab7ac767fa5b3cae8561c48316646805e263b4dc1a9862621100
+74,7wDQOLHLu-I,773,Singular value definition and some remarks.,Playlist and English captions,en-orig,774.800,46fad64b782bf64423c4d0c475e50434dddab8afb01b7c75b514bd891e735127
+75,15E5p2M_uv4,1929,Proof of singular value decomposition theorem.,Playlist and English captions,en-orig,1930.239,b6d15290c2f351f2eda86225a962a3083cafc88601e8844a6542e9116949461f
+76,hy_2HezdzQo,711,Partitioning the SVD,Playlist and English captions,en-orig,712.880,6a253edf3d93117fd5abd5d50cfaea10669000b30ac34730e56351bbec71dba6
+77,dZbuA6P_WvE,2237,Properties of SVD,Playlist and English captions,en-orig,2238.760,e0d99c1ebb9513fff7799f49286af50be5066ca4a57a496c453896f2e40b0e9e
+78,QMeuDyN07dg,1053,Generalized inverse of matrices,Playlist and English captions,en-orig,1054.840,ee30232dfe8ad370fb0da58a2952afd99999725eeaf0d585d63de6e926f4d755
+79,F1lZtVJK3qc,1572,Least squares,Playlist and English captions,en-orig,1573.059,6bfd0420a821c0264d572f2374f564cbbc33925c284a05f84bc0ec1563bd55c7
+80,yYeqLnta8zs,1247,Constrained least squares,Playlist and English captions,en-orig,1248.059,77e4355d9a6c6ef5815568a48faa2c49ed106b5ad0cac9257b38ba78df479be0

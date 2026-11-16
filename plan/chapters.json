@@ -1,0 +1,26 @@
+{
+  "playlist": "https://www.youtube.com/playlist?list=PLbMVogVj5nJQnzk6Sn9o6RTpu4Evx0LOT",
+  "course": "https://nptel.ac.in/courses/111108157",
+  "chapters": [
+    [1, 4, "Matrices, vector spaces, and linear maps"],
+    [5, 7, "Fundamental subspaces and rank"],
+    [8, 10, "Inner products and orthogonality"],
+    [11, 12, "Determinants"],
+    [13, 16, "Vector norms and norm equivalence"],
+    [17, 22, "Dual, matrix, and induced norms"],
+    [23, 26, "Spectral radius, matrix powers, and invertibility"],
+    [27, 29, "Perturbing inverses and linear systems"],
+    [30, 34, "Eigenvalues, similarity, and diagonalization"],
+    [35, 36, "Product spectra and biorthogonality"],
+    [37, 40, "Unitary similarity and Schur form"],
+    [41, 45, "Cayley–Hamilton, normality, and QR"],
+    [46, 51, "Jordan form and matrix functions"],
+    [52, 56, "Elimination, pivoting, and Cholesky"],
+    [57, 60, "Hermitian matrices and Rayleigh quotients"],
+    [61, 64, "Minimax, Weyl bounds, and monotonicity"],
+    [65, 68, "Interlacing and spectral majorization"],
+    [69, 73, "Eigenvalue localization and perturbation"],
+    [74, 77, "Singular value decomposition"],
+    [78, 80, "Pseudoinverses and least squares"]
+  ]
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Study guide · Matrix Theory</title>
+<link rel="stylesheet" href="assets/reader.css">
+<script defer src="assets/math-config.js"></script><script defer src="assets/mathjax-tex-svg.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="index.html">Matrix Theory</a>
+  <nav aria-label="Reader"><a href="index.html">Chapters</a><a href="study-guide.html">Study guide</a><a href="source-map.html">Lectures</a><a href="laboratory.html">Labs</a></nav>
+</header>
+<main id="main" class="reading"><h1 id="study-guide">Study guide</h1>
+<h2 id="solve-a-model-whose-data-can-change">Solve a model whose data can change</h2>
+<p>Work through <a href="chapters/ch01.html">Chapters 1–8</a> if your main question is whether a set of measurements determines an unknown vector. Start with the null space and the image. The first describes what changing the unknown leaves invisible. The second describes which measurements the model can explain. Add inner products to separate orthogonal components, then use norms to quantify the sensitivity of the solution.</p>
+<ul>
+<li>Reconstruct a basis from a spanning list and explain why each discarded vector contributes no new direction.</li>
+<li>Given a residual and a perturbation bound, determine which one speaks to the error in the recovered vector.</li>
+<li>Construct two matrices with the same eigenvalues and different behavior under repeated multiplication.</li>
+</ul>
+<h2 id="choose-a-representation-of-a-matrix">Choose a representation of a matrix</h2>
+<p><a href="chapters/ch09.html">Chapters 9–14</a> ask which coordinate transformations preserve the properties you need. Similarity preserves the spectrum. Unitary similarity also preserves Euclidean lengths, so it makes a stronger computational promise. Gaussian elimination solves a different problem by changing equations while preserving the solution set. Explain which relation each factorization establishes and what you can read from its factors.</p>
+<ul>
+<li>Compare diagonalization, Schur triangularization, and Jordan form on a defective matrix.</li>
+<li>Track row permutations when solving triangular systems.</li>
+<li>Check whether a positive definite model admits Cholesky factorization before interpreting its factors.</li>
+</ul>
+<h2 id="bound-a-spectrum-and-solve-an-inverse-problem">Bound a spectrum and solve an inverse problem</h2>
+<p><a href="chapters/ch15.html">Chapters 15–20</a> use order and geometry to bound eigenvalues, then use singular vectors to analyze arbitrary rectangular maps. Compute both the residual and the length of a recovered solution when the map loses rank. In constrained least squares, check consistency of the constraint separately from uniqueness of the minimizer.</p>
+<ul>
+<li>Derive an eigenvalue bound from a trial subspace or a Hermitian perturbation.</li>
+<li>Use a singular value cutoff to predict the trade-off between residual and solution norm.</li>
+<li>Compare a minimum-norm least-squares solution with the minimizer under an exact equality constraint.</li>
+</ul>
+<p>Use the <a href="source-map.html">lecture map</a> to follow the recordings in order and the <a href="laboratory.html">lab index</a> to reproduce numerical checks.</p></main>
+<footer>Independent study edition · <a href="https://nptel.ac.in/courses/111108157">NPTEL course</a></footer>
+</body>
+</html>

@@ -1,0 +1,210 @@
+{
+  "lecture_count": 80,
+  "chapter_count": 20,
+  "html_pages": 24,
+  "timestamped_section_links": 111,
+  "worked_solution_markers": 90,
+  "labs": [
+    {
+      "chapter": 1,
+      "lectures": [
+        1,
+        4
+      ],
+      "worked_solutions": 4,
+      "chapter_and_lab_sha256": "4cbd74fe39b77e4247583a8848f20fa845d01a1da3ac2f0d76ac10b0ddabb618",
+      "lab_output": "Command [3, 1] produces [4, 2].\nBasis images: [[0, 2], [2, 0]]."
+    },
+    {
+      "chapter": 2,
+      "lectures": [
+        5,
+        7
+      ],
+      "worked_solutions": 5,
+      "chapter_and_lab_sha256": "82a7eb0229242dea70ca38d71206d871e65cb2cd077f3cf80a7436c4e0b93d33",
+      "lab_output": "Compatible command numerator: [ 7.  8. 15.  6.]\nSmallest perturbed singular value: 2.4253557804597447e-09\nPerturbed rank: 3 at tolerance 1e-10, 2 at tolerance 1e-6."
+    },
+    {
+      "chapter": 3,
+      "lectures": [
+        8,
+        10
+      ],
+      "worked_solutions": 5,
+      "chapter_and_lab_sha256": "8d8eb4392b7beec9b5425965e5acf1e0aa717d318418831df76be752085ce6ca",
+      "lab_output": "Weighted projection: [2.44444444 1.44444444 3.88888889]\nClassical: reconstruction 1.770e-25, orthogonality defect 1.225e+00\nModified: reconstruction 6.953e-25, orthogonality defect 1.225e-08"
+    },
+    {
+      "chapter": 4,
+      "lectures": [
+        11,
+        12
+      ],
+      "worked_solutions": 5,
+      "chapter_and_lab_sha256": "14546805c8c580d3c7833870f612f1b8089c3f7d6744e8949d867990c1f55a53",
+      "lab_output": "Third-channel perturbation changes the solution by: [-0.1 -0.1  0.1]\nUnderflow example: determinant 0, log magnitude -920.341"
+    },
+    {
+      "chapter": 5,
+      "lectures": [
+        13,
+        16
+      ],
+      "worked_solutions": 5,
+      "chapter_and_lab_sha256": "65eb640f01978717caf3e85de5d3754b8db2d870204f89c137f35024b703417e",
+      "lab_output": "p = 1: residual [-0.5  0.   0. ], optimum 0.500000\np = 2: residual [-0.33333333 -0.16666667  0.16666667], optimum 0.408248\np = inf: residual [-0.25 -0.25  0.25], optimum 0.250000\nFlat vector in dimension 1024: norm ratio 1024."
+    },
+    {
+      "chapter": 6,
+      "lectures": [
+        17,
+        22
+      ],
+      "worked_solutions": 5,
+      "chapter_and_lab_sha256": "2d770b834b543a5f839b3cc44224c536798bf5b820655ecc91ae6e4ab9439135",
+      "lab_output": "Complex dual norm at p=3: 3.119698\nInduced p=1: 2.000000\nInduced p=2: 1.732051\nInduced p=inf: 2.000000"
+    },
+    {
+      "chapter": 7,
+      "lectures": [
+        23,
+        26
+      ],
+      "worked_solutions": 5,
+      "chapter_and_lab_sha256": "ab3a92fa2b70b667afe0931bbf67dd6c7ad951e1600ebc6be6512c519b417fbf",
+      "lab_output": "Peak in the first coordinate: 8.192\nAdapted inverse tail at m=24: 0.073669 <= 0.341103\nJacobi maximum error after 12 steps: 7.777778e-07"
+    },
+    {
+      "chapter": 8,
+      "lectures": [
+        27,
+        29
+      ],
+      "worked_solutions": 4,
+      "chapter_and_lab_sha256": "3e5e69dae04c17604f96c9e01f3038e04af5ccc00e431e0d79d3b2352ae58be7",
+      "lab_output": "calibration: q=0.1, error=0.111111, bound=0.111111\ncandidate: residual=0.0001, backward error=5e-05, forward error=1"
+    },
+    {
+      "chapter": 9,
+      "lectures": [
+        30,
+        34
+      ],
+      "worked_solutions": 4,
+      "chapter_and_lab_sha256": "516f1fa7846388ce45d1afb24b02fee1586180cd8590fa35af412a7740b58a81",
+      "lab_output": "distinct roots: 0.10639762, 0.00097656\nrepeated root:  0.40265318, 0.10737418"
+    },
+    {
+      "chapter": 10,
+      "lectures": [
+        35,
+        36
+      ],
+      "worked_solutions": 4,
+      "chapter_and_lab_sha256": "93734f5d7774749352679591398af71c360083b7d9740fc83610903f967dccc0",
+      "lab_output": "eigenvalue derivative: 4.000000\nfirst spectral projector norm: 4.123106"
+    },
+    {
+      "chapter": 11,
+      "lectures": [
+        37,
+        40
+      ],
+      "worked_solutions": 4,
+      "chapter_and_lab_sha256": "4d3a5b10254ac1a703c57de99634900f519503c873f6cdc36538bde8efd348a8",
+      "lab_output": "one-step response: 3.041381\nSchur coupling magnitude: 3.000000"
+    },
+    {
+      "chapter": 12,
+      "lectures": [
+        41,
+        45
+      ],
+      "worked_solutions": 4,
+      "chapter_and_lab_sha256": "ca3e217d359db1a844d7b6f724dce3025002d331d0e771c605a4d8f337ee5272",
+      "lab_output": "resolvent response norm: 30.066593\nnormality defect (Frobenius): 12.791403"
+    },
+    {
+      "chapter": 13,
+      "lectures": [
+        46,
+        51
+      ],
+      "worked_solutions": 4,
+      "chapter_and_lab_sha256": "9d6c3e6dc7a926adeb5d609b54efe5cad4dbd250a9e49d729d973e6d33285ed7",
+      "lab_output": "nullity profile: [0, 1, 2, 3]\nstep-20 transfer: 28.517981\nperturbation shift radius: 0.010000"
+    },
+    {
+      "chapter": 14,
+      "lectures": [
+        52,
+        56
+      ],
+      "worked_solutions": 4,
+      "chapter_and_lab_sha256": "cdc4fd6f6ffa6ee442f38f5cff365b29b4d108bacb0f38bfe0e323c176329bf1",
+      "lab_output": "first multiplier without pivoting: 1e+08\nunpivoted: [0. 1.], pivoted: [1. 1.]\nCholesky diagonal: [2.         1.41421356]"
+    },
+    {
+      "chapter": 15,
+      "lectures": [
+        57,
+        60
+      ],
+      "worked_solutions": 5,
+      "chapter_and_lab_sha256": "3beab8be7ab0d9aed4ac4cc9fcbf1a61fbcc9dc4b5839f7575b11b6150f96784",
+      "lab_output": "Stiffness spectrum (ascending): [2.58578644 5.41421356]\nTrial quotient: 2.600; residual: 0.200"
+    },
+    {
+      "chapter": 16,
+      "lectures": [
+        61,
+        64
+      ],
+      "worked_solutions": 5,
+      "chapter_and_lab_sha256": "41f440949718a2ab63110ec3c8efa8666db7049c99a339e881da2c4cb0ff8e8c",
+      "lab_output": "Updated spectrum: [8.         5.41421356 2.58578644]\nPlane certificate: 5.000\nWorst permitted second stiffness: 5.014214"
+    },
+    {
+      "chapter": 17,
+      "lectures": [
+        65,
+        68
+      ],
+      "worked_solutions": 5,
+      "chapter_and_lab_sha256": "3685a3c3c4c990f61b0c31364cd4b9b892d48b5f74af3cccf7cb0c40e9b4365a",
+      "lab_output": "Extended spectrum: [8. 4. 1.]\nSorted diagonal: [6. 5. 2.]\nBorder couplings: [2.23606798 1.73205081]"
+    },
+    {
+      "chapter": 18,
+      "lectures": [
+        69,
+        73
+      ],
+      "worked_solutions": 5,
+      "chapter_and_lab_sha256": "fe57b5f3eba61a1ae6fb7c8adce15068cc022772827aad2dbd9037bade07a9ae",
+      "lab_output": "Scaled disk radii: [0.5  0.16 0.  ]\nMode derivative: 4.000000\nMaximum distance to nominal spectrum: 0.074456\nNormal matching distance: 0.000565 (bound 0.028284)"
+    },
+    {
+      "chapter": 19,
+      "lectures": [
+        74,
+        77
+      ],
+      "worked_solutions": 4,
+      "chapter_and_lab_sha256": "98a9d87ce626bc761e5df1a0d68f00ccadc4e9393c8f66593d20bc67027c652a",
+      "lab_output": "Nonzero gains: 2, 0.02\nRank-one error: 0.02. Observable gain ratio: 100."
+    },
+    {
+      "chapter": 20,
+      "lectures": [
+        78,
+        80
+      ],
+      "worked_solutions": 4,
+      "chapter_and_lab_sha256": "0dd8e9893829503a990e31678ed19f9336143152699b240391c4bfdc318dc977",
+      "lab_output": "Unconstrained x3 = 50, bounded x3 = 2.\nSquared residuals: 1, 1.9216."
+    }
+  ],
+  "rebuild_identical": true
+}

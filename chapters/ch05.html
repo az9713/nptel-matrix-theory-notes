@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Vector norms and equivalence · Matrix Theory</title>
+<link rel="stylesheet" href="../assets/reader.css">
+<script defer src="../assets/math-config.js"></script><script defer src="../assets/mathjax-tex-svg.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="../index.html">Matrix Theory</a>
+  <nav aria-label="Reader"><a href="../index.html">Chapters</a><a href="../study-guide.html">Study guide</a><a href="../source-map.html">Lectures</a><a href="../laboratory.html">Labs</a></nav>
+</header>
+<main id="main" class="reading"><p class="context">Chapter 5 · <a href="../source-map.html#l13">Lectures 13–16</a></p><h1>Vector norms and equivalence</h1><nav class="recordings" aria-label="Source recordings"><a href="https://www.youtube.com/watch?v=iA7MnBhkXvQ">L13</a> <a href="https://www.youtube.com/watch?v=3XOM2g53bNI">L14</a> <a href="https://www.youtube.com/watch?v=UkYKyelb5Wc">L15</a> <a href="https://www.youtube.com/watch?v=TWHfGPyHyAI">L16</a></nav><p>The instrument from <a href="ch02.html">Chapter 2</a> reports <span class="math">\((2,1,4)^T\)</span> when compatible outputs must have the form <span class="math">\((s,t,s+t)^T\)</span>. Should the correction minimize total absolute adjustment, squared adjustment, or the worst adjustment in any channel? The three choices agree on which sequences of reading errors tend to zero in fixed dimension. They give different decisions for a finite error of one unit.</p>
+<div class="toc">
+<ul>
+<li><a href="#what-a-norm-measures">What a norm measures</a></li>
+<li><a href="#coordinate-norms-and-their-triangle-inequality">Coordinate norms and their triangle inequality</a></li>
+<li><a href="#correction-objectives-for-the-same-reading">Correction objectives for the same reading</a></li>
+<li><a href="#equivalence-on-a-fixed-finite-dimensional-space">Equivalence on a fixed finite-dimensional space</a></li>
+<li><a href="#laboratory">Laboratory</a></li>
+<li><a href="#exercises-with-worked-solutions">Exercises with worked solutions</a></li>
+<li><a href="#sources-and-limits">Sources and limits</a></li>
+</ul>
+</div>
+<h2 id="what-a-norm-measures">What a norm measures</h2>
+<p><a href="https://www.youtube.com/watch?v=iA7MnBhkXvQ&amp;t=336s">L13 05:36</a></p>
+<p>A norm on a vector space <span class="math">\(V\)</span> over <span class="math">\(\mathbb R\)</span> or <span class="math">\(\mathbb C\)</span> is a function <span class="math">\(N:V\to[0,\infty)\)</span> satisfying <span class="math">\(N(x)=0\)</span> exactly at <span class="math">\(x=0\)</span>, <span class="math">\(N(\alpha x)=|\alpha|N(x)\)</span> for every scalar <span class="math">\(\alpha\)</span>, and <span class="math">\(N(x+y)\leq N(x)+N(y)\)</span>. These conditions express definiteness, absolute homogeneity, and the triangle inequality. From the triangle inequality, <span class="math">\(N(x)\leq N(y)+N(x-y)\)</span>, and interchanging <span class="math">\(x,y\)</span> gives the reverse triangle inequality</p>
+<div class="equation">\[|N(x)-N(y)|\leq N(x-y).
+\tag{5.1}\]</div>
+
+<p>Thus changes in the reported magnitude are controlled by the magnitude of the underlying change. The <strong>unit ball</strong> is <span class="math">\(\{x:N(x)\leq1\}\)</span>. For any two vectors in this ball and any <span class="math">\(\theta\in[0,1]\)</span>, their mixture <span class="math">\(\theta x+(1-\theta)y\)</span> also lies there by homogeneity and the triangle inequality. This property is convexity. It matters for feasibility because averaging two errors that each pass a norm threshold preserves that threshold.</p>
+<p>Norms can also be constructed from simpler norms. For instance if <span class="math">\(M\)</span> is a norm on the output space of an injective linear map <span class="math">\(T\)</span>, then <span class="math">\(N(x)=M(Tx)\)</span> inherits homogeneity and the triangle inequality from linearity and the norm axioms. Injectivity supplies definiteness. This covers positive channel rescaling before applying a coordinate norm. With a zero scale a purely unmeasured coordinate could have zero reported size. <a href="https://www.youtube.com/watch?v=3XOM2g53bNI&amp;t=1538s">L14 25:38</a></p>
+<p>The length associated with an inner product is a norm by the Cauchy–Schwarz and triangle arguments in <a href="ch03.html">Chapter 3</a>. Each such norm satisfies the parallelogram law</p>
+<div class="equation">\[N(x+y)^2+N(x-y)^2=2N(x)^2+2N(y)^2.
+\tag{5.2}\]</div>
+
+<p>Indeed, the two squares expand into the same diagonal terms and cross terms with opposite signs. For the norm <span class="math">\(\|x\|_1=\sum_j|x_j|\)</span> on <span class="math">\(\mathbb R^2\)</span>, <span class="math">\(x=(1,0)^T\)</span> and <span class="math">\(y=(0,1)^T\)</span> give left side eight and right side four. For the norm <span class="math">\(\|x\|_\infty=\max_j|x_j|\)</span> they give left side two and right side four. Definiteness and the triangle inequality therefore describe more geometries than inner products do. The converse of (5.2) is the Jordan–von Neumann characterization. <a href="https://www.jstor.org/stable/1968653">Jordan and von Neumann, 1935</a></p>
+<h2 id="coordinate-norms-and-their-triangle-inequality">Coordinate norms and their triangle inequality</h2>
+<p><a href="https://www.youtube.com/watch?v=3XOM2g53bNI&amp;t=711s">L14 11:51</a></p>
+<p>For <span class="math">\(1\leq p&lt;\infty\)</span> and <span class="math">\(x\in\mathbb F^n\)</span>, define</p>
+<div class="equation">\[\|x\|_p=\left(\sum_{j=1}^{n}|x_j|^p\right)^{1/p},
+\qquad \|x\|_\infty=\max_j|x_j|.
+\tag{5.3}\]</div>
+
+<p>The endpoint cases <span class="math">\(p=1\)</span> and <span class="math">\(p=\infty\)</span> obey the triangle inequality by applying the scalar absolute-value triangle inequality before summing or taking a maximum. For <span class="math">\(1&lt;p&lt;\infty\)</span> let <span class="math">\(q=p/(p-1)\)</span>, so <span class="math">\(1/p+1/q=1\)</span>. For nonnegative <span class="math">\(a,b\)</span>, weighted arithmetic–geometric mean gives <span class="math">\(ab\leq a^p/p+b^q/q\)</span>. This follows by applying concavity of the logarithm to <span class="math">\(a^p\)</span> and <span class="math">\(b^q\)</span> with weights <span class="math">\(1/p\)</span> and <span class="math">\(1/q\)</span>, and extends to zero arguments by continuity. Normalize nonzero vectors <span class="math">\(u,v\)</span> by their <span class="math">\(p\)</span>- and <span class="math">\(q\)</span>-lengths and apply this inequality entry by entry. The sum of the upper bounds is <span class="math">\(1/p+1/q=1\)</span>, which proves Hölder's inequality</p>
+<div class="equation">\[\sum_j|u_jv_j|\leq\|u\|_p\|v\|_q.
+\tag{5.4}\]</div>
+
+<p>To prove the triangle inequality let <span class="math">\(z=u+v\)</span>. Bound <span class="math">\(\sum_j|z_j|^p\)</span> by <span class="math">\(\sum_j(|u_j|+|v_j|)|z_j|^{p-1}\)</span>. Hölder's inequality bounds the two terms by <span class="math">\((\|u\|_p+\|v\|_p)\|z\|_p^{p-1}\)</span> because <span class="math">\((p-1)q=p\)</span>. If <span class="math">\(z\ne0\)</span>, division gives Minkowski's inequality <span class="math">\(\|u+v\|_p\leq\|u\|_p+\|v\|_p\)</span>. The case <span class="math">\(z=0\)</span> is automatic. Definiteness and homogeneity follow from (5.3), completing the norm proof. The same expression for <span class="math">\(0&lt;p&lt;1\)</span> fails on two distinct coordinate vectors, whose sum has length <span class="math">\(2^{1/p}&gt;2\)</span>.</p>
+<p>For <span class="math">\(1\leq p&lt;q\leq\infty\)</span>, the sharp dimension-dependent comparison is</p>
+<div class="equation">\[\|x\|_q\leq\|x\|_p\leq n^{1/p-1/q}\|x\|_q,
+\qquad 1/\infty=0.
+\tag{5.5}\]</div>
+
+<p>For the first inequality divide a nonzero <span class="math">\(x\)</span> by <span class="math">\(\|x\|_p\)</span>. Each resulting magnitude is at most one, so raising the exponent from <span class="math">\(p\)</span> to <span class="math">\(q\)</span> decreases the sum of powers. This gives <span class="math">\(\|x\|_q/\|x\|_p\leq1\)</span>, including the maximum as the endpoint. For the second, when <span class="math">\(q\)</span> is finite apply Hölder to <span class="math">\(\sum_j|x_j|^p\cdot1\)</span> with conjugate exponents <span class="math">\(q/p\)</span> and <span class="math">\(q/(q-p)\)</span>, then take the <span class="math">\(p\)</span>th root. When <span class="math">\(q=\infty\)</span>, bound each summand by <span class="math">\(\|x\|_\infty^p\)</span>. A coordinate vector attains the first bound, and a vector with every magnitude equal and positive attains the second. In particular <span class="math">\(\|x\|_\infty\leq\|x\|_p\leq n^{1/p}\|x\|_\infty\)</span>, which proves the limit as <span class="math">\(p\to\infty\)</span>.</p>
+<h2 id="correction-objectives-for-the-same-reading">Correction objectives for the same reading</h2>
+<p><a href="https://www.youtube.com/watch?v=UkYKyelb5Wc&amp;t=420s">L15 07:00</a></p>
+<p>Return to the incompatible observation <span class="math">\(b=(2,1,4)^T\)</span>. Let <span class="math">\(z\)</span> be any real compatible reading and <span class="math">\(r=b-z\)</span> its residual. With <span class="math">\(y=(-1,-1,1)^T\)</span>, compatibility of <span class="math">\(z\)</span> requires <span class="math">\(y^Tr=1\)</span>. In particular <span class="math">\(\sum_j|r_j|\geq1\)</span>. A residual <span class="math">\((0,0,1)^T\)</span> attains equality, and so does any residual with <span class="math">\(r_1,r_2\leq0\)</span>, <span class="math">\(r_3\geq0\)</span>, and <span class="math">\(-r_1-r_2+r_3=1\)</span>. Minimizing <span class="math">\(\|r\|_1\)</span> permits many residuals including concentrated correction.</p>
+<p>Cauchy–Schwarz bounds <span class="math">\(1=y^Tr\leq\sqrt3\|r\|_2\)</span>, with equality for <span class="math">\(r=y/3\)</span>. This selects the unique least-squares fit previously established by orthogonal projection. Finally, <span class="math">\(1=y^Tr\leq3\|r\|_\infty\)</span> gives the same <span class="math">\(r=y/3\)</span> for the worst-channel criterion. Equality forces all three signed summands to be <span class="math">\(1/3\)</span>. The two objectives coincide in this case because the entries of the certificate <span class="math">\(y\)</span> have equal magnitude. For a relation <span class="math">\(y=(-2,-1,1)^T\)</span> with the same discrepancy <span class="math">\(y^Tr=1\)</span>, the minimum Euclidean residual is <span class="math">\(y/6\)</span> while the minimum maximum residual is <span class="math">\((-1,-1,1)^T/4\)</span>. Weighted penalties or a different compatibility relation can separate the estimates even when all residual norms are equivalent.</p>
+<h2 id="equivalence-on-a-fixed-finite-dimensional-space">Equivalence on a fixed finite-dimensional space</h2>
+<p><a href="https://www.youtube.com/watch?v=UkYKyelb5Wc&amp;t=1441s">L15 24:01</a> · <a href="https://www.youtube.com/watch?v=TWHfGPyHyAI&amp;t=32s">L16 00:32</a></p>
+<p>Two norms <span class="math">\(N_1,N_2\)</span> are equivalent when there exist constants <span class="math">\(c,C&gt;0\)</span> with <span class="math">\(cN_1(x)\leq N_2(x)\leq CN_1(x)\)</span> for every <span class="math">\(x\)</span>. On a fixed finite-dimensional space take basis coordinates and let <span class="math">\(e_j\)</span> denote the vector with a single one in coordinate <span class="math">\(j\)</span>. By repeated triangle inequalities any norm <span class="math">\(N\)</span> obeys</p>
+<div class="equation">\[N(x)\leq\sum_j |x_j|N(e_j)\leq M\|x\|_\infty,
+\qquad M=\sum_jN(e_j).
+\tag{5.6}\]</div>
+
+<p>Equation (5.1) then proves continuity of <span class="math">\(N\)</span> in the maximum norm. The set <span class="math">\(\{x:\|x\|_\infty=1\}\)</span> is closed and bounded in finite-dimensional real coordinates, with <span class="math">\(\mathbb C^n\)</span> identified with <span class="math">\(\mathbb R^{2n}\)</span>. It is compact, so <span class="math">\(N\)</span> attains a minimum <span class="math">\(m\)</span> on it. Each point is nonzero, hence <span class="math">\(m&gt;0\)</span>. Apply this minimum to <span class="math">\(x/\|x\|_\infty\)</span> to obtain <span class="math">\(m\|x\|_\infty\leq N(x)\)</span>. Since every norm is bounded above and below by multiples of the coordinate maximum norm, division of the corresponding constants compares any two norms. The zero-dimensional case has only the zero vector and satisfies the comparison trivially.</p>
+<p>For a sequence <span class="math">\(x^{(k)}\)</span>, convergence to <span class="math">\(x\)</span> in norm <span class="math">\(N\)</span> means <span class="math">\(N(x^{(k)}-x)\to0\)</span>. The two-sided comparison shows that convergence in any one of the norms implies convergence to the same <span class="math">\(x\)</span> in all others. A finite maximum of convergent coordinate errors vanishes, so this also gives equivalence with componentwise convergence. The constants can grow with dimension. On the space of finitely supported sequences, the vector with first <span class="math">\(k\)</span> entries equal to <span class="math">\(1/k\)</span> and remaining entries zero has maximum norm <span class="math">\(1/k\)</span> and sum norm one. There is no fixed comparison constant bounding the sum norm by a multiple of the maximum on that infinite-dimensional space.</p>
+<h2 id="laboratory">Laboratory</h2>
+<p><a href="../code/ch05.py">Run or inspect the Python laboratory</a>. It uses NumPy on fixed vectors and checks the exact sensor discrepancy and the Euclidean and maximum optima by matching feasible candidates with lower bounds. It checks (5.5) on contrasting vectors and reports the dimension-dependent saturation case. The script takes no inputs and prints to standard output. Assertion failures indicate disagreement with the predicted calculations.</p>
+<p>For <span class="math">\(y=(-2,-1,1)^T\)</span>, the computed minimum residual sizes are <span class="math">\(0.5\)</span>, approximately <span class="math">\(0.408248\)</span>, and <span class="math">\(0.25\)</span> in the sum, Euclidean, and maximum norms respectively. The flat-vector test gives a sum-to-maximum ratio of <span class="math">\(1024\)</span> in dimension <span class="math">\(1024\)</span>.</p>
+<h2 id="exercises-with-worked-solutions">Exercises with worked solutions</h2>
+<h3 id="test-a-cost-that-resembles-a-norm">Test a cost that resembles a norm</h3>
+<p>Does <span class="math">\(N(x)=x_1^2+x_2^2\)</span> define a norm on <span class="math">\(\mathbb R^2\)</span>?</p>
+<p><strong>Solution.</strong> It is positive on nonzero vectors, but <span class="math">\(N(2e_1)=4\)</span> and <span class="math">\(2N(e_1)=2\)</span>. It also fails the triangle inequality for <span class="math">\(x=y=e_1\)</span>. Taking the square root supplies the Euclidean norm.</p>
+<h3 id="locate-a-worst-coefficient-for-the-norm-comparison">Locate a worst coefficient for the norm comparison</h3>
+<p>Find the smallest <span class="math">\(C\)</span> for which <span class="math">\(\|x\|_1\leq C\|x\|_2\)</span> in <span class="math">\(\mathbb R^9\)</span>.</p>
+<p><strong>Solution.</strong> Equation (5.5) gives <span class="math">\(C\leq3\)</span>. For the vector of nine ones the norms are nine and three, giving ratio three. Any smaller constant fails there.</p>
+<h3 id="measure-a-different-compatibility-relation">Measure a different compatibility relation</h3>
+<p>For <span class="math">\(y=(-2,-1,1)^T\)</span> and <span class="math">\(y^Tr=1\)</span>, find all sum-norm minimizers.</p>
+<p><strong>Solution.</strong> The inequality <span class="math">\(1=y^Tr\leq2\|r\|_1\)</span> gives a bound of <span class="math">\(1/2\)</span>. For equality, only coordinates where <span class="math">\(|y_i|=2\)</span> may carry residual. The first coordinate is the only such coordinate, and satisfying the equality requires <span class="math">\(r=(-1/2,0,0)^T\)</span>.</p>
+<h3 id="recognize-a-weighted-maximum">Recognize a weighted maximum</h3>
+<p>Given positive tolerances <span class="math">\(\tau_j\)</span>, define <span class="math">\(N_\tau(r)=\max_j|r_j|/\tau_j\)</span>. Give sharp comparison constants with <span class="math">\(\|r\|_\infty\)</span>.</p>
+<p><strong>Solution.</strong> Every ratio is at most <span class="math">\(\|r\|_\infty/\min_j\tau_j\)</span>, proving the upper constant. Take an index attaining <span class="math">\(\|r\|_\infty\)</span>. Its ratio is at least <span class="math">\(\|r\|_\infty/\max_j\tau_j\)</span>, proving the lower constant. Coordinate vectors at indices with smallest and largest tolerance attain the respective bounds. The norm tests the largest fraction of a tolerance used anywhere.</p>
+<h3 id="identify-where-the-convergence-proof-needs-finite-dimension">Identify where the convergence proof needs finite dimension</h3>
+<p>For <span class="math">\(x^{(k)}\)</span> with <span class="math">\(k\)</span> entries equal to <span class="math">\(1/k\)</span>, find the <span class="math">\(p\)</span>-norm as <span class="math">\(k\to\infty\)</span>. Which norms assign convergence to zero?</p>
+<p><strong>Solution.</strong> For finite <span class="math">\(p\)</span>, <span class="math">\(\|x^{(k)}\|_p=(k/k^p)^{1/p}=k^{1/p-1}\)</span>. This is one at <span class="math">\(p=1\)</span> and tends to zero for <span class="math">\(p&gt;1\)</span>. The maximum is <span class="math">\(1/k\)</span>, so it also tends to zero. The increasingly many small coordinates create a fixed total absolute error.</p>
+<h2 id="sources-and-limits">Sources and limits</h2>
+<p>The sequence is <a href="https://www.youtube.com/watch?v=iA7MnBhkXvQ">Lecture 13, norms and inner products</a>, <a href="https://www.youtube.com/watch?v=3XOM2g53bNI">Lecture 14, vector norms</a>, <a href="https://www.youtube.com/watch?v=UkYKyelb5Wc">Lecture 15, applications and equivalence</a>, and <a href="https://www.youtube.com/watch?v=TWHfGPyHyAI">Lecture 16, convergence and equivalence</a>. The sensor residual calculations are original. Norm equivalence is a topological statement together with a uniform comparison at fixed dimension. Selecting an error objective still requires a physical tolerance or statistical loss model.</p><nav class="chapter-nav" aria-label="Chapter order"><a href="../chapters/ch04.html">← Previous chapter</a><a href="../chapters/ch06.html">Next chapter →</a></nav></main>
+<footer>Independent study edition · <a href="https://nptel.ac.in/courses/111108157">NPTEL course</a></footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Perturbation of inverses and linear systems · Matrix Theory</title>
+<link rel="stylesheet" href="../assets/reader.css">
+<script defer src="../assets/math-config.js"></script><script defer src="../assets/mathjax-tex-svg.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="../index.html">Matrix Theory</a>
+  <nav aria-label="Reader"><a href="../index.html">Chapters</a><a href="../study-guide.html">Study guide</a><a href="../source-map.html">Lectures</a><a href="../laboratory.html">Labs</a></nav>
+</header>
+<main id="main" class="reading"><p class="context">Chapter 8 · <a href="../source-map.html#l27">Lectures 27–29</a></p><h1>Perturbation of inverses and linear systems</h1><nav class="recordings" aria-label="Source recordings"><a href="https://www.youtube.com/watch?v=hxi95z6i7j4">L27</a> <a href="https://www.youtube.com/watch?v=uE0eUFgvn5k">L28</a> <a href="https://www.youtube.com/watch?v=oe-TgY48Goc">L29</a></nav><p>A two-channel instrument reports a strong signal and a weak signal. Reconstructing the weak component requires dividing its reading by its gain. If the gain is miscalibrated, the reconstruction may change substantially even when the coefficient matrix barely changes in norm. The practical question is which error a numerical check can certify.</p>
+<p>This chapter uses an original dimensionless calibration model. The recordings supply the sequence of matrix norm equivalence, inverse perturbation, and linear-system perturbation.</p>
+<div class="toc">
+<ul>
+<li><a href="#norms-and-gain-uncertainty-l27-0016">Norms and gain uncertainty (L27 00:16)</a></li>
+<li><a href="#when-the-inverse-survives-l28-0307">When the inverse survives (L28 03:07)</a></li>
+<li><a href="#forward-error-and-backward-error-l29-0017">Forward error and backward error (L29 00:17)</a></li>
+<li><a href="#laboratory">Laboratory</a></li>
+<li><a href="#exercises-and-solutions">Exercises and solutions</a></li>
+</ul>
+</div>
+<h2 id="norms-and-gain-uncertainty-l27-0016">Norms and gain uncertainty (<a href="https://www.youtube.com/watch?v=hxi95z6i7j4&amp;t=16s">L27 00:16</a>)</h2>
+<p>Let <span class="math">\(A\)</span> be an invertible square matrix of order <span class="math">\(n\)</span>, <span class="math">\(x\)</span> an unknown input and <span class="math">\(b\)</span> its observed output, so <span class="math">\(Ax=b\)</span>. Write <span class="math">\(E\)</span> for a calibration error and <span class="math">\(f\)</span> for a measurement error. The perturbed equation is <span class="math">\((A+E)(x+h)=b+f\)</span>, where <span class="math">\(h\)</span> is the change in the reconstructed input. Use the vector infinity norm <span class="math">\(\|x\|_\infty=\max_i|x_i|\)</span> and its induced matrix norm <span class="math">\(\|A\|_\infty=\max_i\sum_j |a_{ij}|\)</span>. In the derivations, <span class="math">\(\|\cdot\|\)</span> may be any vector norm and its induced matrix norm. In particular, <span class="math">\(\|Ax\|\leq\|A\|\|x\|\)</span> and <span class="math">\(\|AB\|\leq\|A\|\|B\|\)</span> for compatible matrices.</p>
+<p>Any two norms on a fixed finite-dimensional matrix space are equivalent. To see why, write a matrix as <span class="math">\(\sum_{ij}a_{ij}F_{ij}\)</span> with <span class="math">\(F_{ij}\)</span> the matrix units. For a norm <span class="math">\(N\)</span>, the triangle inequality gives <span class="math">\(N(A)\leq(\sum_{ij}N(F_{ij}))\max_{ij}|a_{ij}|\)</span>. This upper bound applied to <span class="math">\(A-B\)</span> makes <span class="math">\(N\)</span> continuous in the entries by the reverse triangle inequality. On the compact sphere <span class="math">\(\max_{ij}|a_{ij}|=1\)</span>, the continuous positive function <span class="math">\(N\)</span> has a positive minimum. Scaling gives the reverse bound, and applying the comparison twice gives equivalence for any pair. The constants can depend on dimension. For instance <span class="math">\(\|A\|_\infty\leq n\max_{ij}|a_{ij}|\)</span>, with equality for the all-ones matrix.</p>
+<p>Take <span class="math">\(A=\operatorname{diag}(1,\delta)\)</span> with <span class="math">\(0&lt;\delta&lt;1\)</span>, <span class="math">\(b=(1,\delta)^T\)</span>, and <span class="math">\(E=\operatorname{diag}(0,-\eta\delta)\)</span> with <span class="math">\(0&lt;\eta&lt;1\)</span>. The nominal solution is <span class="math">\(x=(1,1)^T\)</span>. The matrix perturbation has infinity norm <span class="math">\(\eta\delta\)</span>, yet the revised weak component is <span class="math">\(1/(1-\eta)\)</span>. As <span class="math">\(\delta\)</span> shrinks, the same relative error in the weak gain has the same effect on its reconstruction. A mixed-unit model should specify how its variables are scaled before interpreting such normwise comparisons. The LAPACK guide tabulates several common choices for these measures. <a href="https://www.netlib.org/lapack/lug/node75.html">LAPACK Users’ Guide, How to Measure Errors</a></p>
+<h2 id="when-the-inverse-survives-l28-0307">When the inverse survives (<a href="https://www.youtube.com/watch?v=uE0eUFgvn5k&amp;t=187s">L28 03:07</a>)</h2>
+<p>Factor the perturbed coefficient matrix as <span class="math">\((A+E)=A(I_n+B)\)</span>, with <span class="math">\(B=A^{-1}E\)</span> and <span class="math">\(I_n\)</span> the identity. The quantity <span class="math">\(q=\|B\|\)</span> measures the gain error after transforming it back to the input coordinates. If <span class="math">\(q&lt;1\)</span>, the geometric series <span class="math">\(\sum_{k=0}^\infty(-B)^k\)</span> converges in the induced norm because its terms are bounded in norm by <span class="math">\(q^k\)</span>. Multiplication of the partial sum with <span class="math">\(I_n+B\)</span> cancels every interior term and leaves a remainder tending to zero. Thus <span class="math">\(I_n+B\)</span> is invertible and its inverse has norm at most <span class="math">\(1/(1-q)\)</span>.</p>
+<p>Subtracting the inverses gives the resolvent identity and a relative bound.</p>
+<div class="equation">\[(A+E)^{-1}-A^{-1}=-(I_n+B)^{-1}BA^{-1},
+\qquad
+\frac{\|(A+E)^{-1}-A^{-1}\|}{\|A^{-1}\|}
+\leq \frac{q}{1-q}.\]</div>
+
+<p>The change begins with <span class="math">\(-A^{-1}EA^{-1}\)</span>. Indeed <span class="math">\((I_n+B)^{-1}=I_n-B+B^2(I_n+B)^{-1}\)</span>, so the discarded inverse correction has norm at most <span class="math">\(q^2\|A^{-1}\|/(1-q)\)</span>. This also identifies the Fréchet derivative, the linear approximation in <span class="math">\(E\)</span> whose remainder is quadratic for fixed <span class="math">\(A\)</span>.</p>
+<p>If computing <span class="math">\(q\)</span> is impractical, use <span class="math">\(q\leq\|A^{-1}\|\|E\|\)</span>. Introduce the condition number <span class="math">\(\kappa(A)=\|A\|\|A^{-1}\|\)</span> and the relative coefficient uncertainty <span class="math">\(\varepsilon_A=\|E\|/\|A\|\)</span>. The sufficient test <span class="math">\(\kappa(A)\varepsilon_A&lt;1\)</span> then uses normwise information alone. In the calibration example, <span class="math">\(\kappa_\infty(A)=1/\delta\)</span> and <span class="math">\(q=\eta\)</span>, so both tests agree. The inverse bound is attained because the weak diagonal entry controls <span class="math">\(\|A^{-1}\|\)</span> and its change. As <span class="math">\(\eta\)</span> tends to one, that entry diverges and the limiting coefficient matrix is singular. In contrast, <span class="math">\(E=2A\)</span> gives <span class="math">\(q=2\)</span> and <span class="math">\(A+E=3A\)</span> remains invertible. The norm condition provides a sufficient guarantee.</p>
+<h2 id="forward-error-and-backward-error-l29-0017">Forward error and backward error (<a href="https://www.youtube.com/watch?v=oe-TgY48Goc&amp;t=17s">L29 00:17</a>)</h2>
+<p>Expanding the perturbed system gives <span class="math">\((A+E)h=f-Ex\)</span>. Suppose <span class="math">\(x\ne0\)</span> and <span class="math">\(q&lt;1\)</span>. Apply <span class="math">\((I_n+B)^{-1}A^{-1}\)</span> to this identity and bound the norm.</p>
+<div class="equation">\[\frac{\|h\|}{\|x\|}
+\leq
+\frac{q+\|A^{-1}f\|/\|x\|}{1-q}
+\leq
+\frac{q+\kappa(A)\|f\|/\|b\|}{1-q}.\]</div>
+
+<p>The second inequality uses <span class="math">\(\|b\|\leq\|A\|\|x\|\)</span>. The two terms distinguish model uncertainty and observation uncertainty. If <span class="math">\(E=0\)</span> and <span class="math">\(f=(0,\delta\alpha)^T\)</span> for scalar <span class="math">\(\alpha\)</span>, then <span class="math">\(h=(0,\alpha)^T\)</span>. With <span class="math">\(\|x\|_\infty=\|b\|_\infty=1\)</span>, this perturbation attains the right-hand-side amplification <span class="math">\(\kappa_\infty(A)\)</span>.</p>
+<p>A computed candidate <span class="math">\(\widehat x\)</span> for the nominal problem defines the residual <span class="math">\(r=b-A\widehat x\)</span>. Its forward error satisfies <span class="math">\(x-\widehat x=A^{-1}r\)</span> exactly. To find how credible the candidate is as a solution of nearby data, define the normwise backward error as the smallest <span class="math">\(s\geq0\)</span> for which <span class="math">\((A+E)\widehat x=b+f\)</span> with <span class="math">\(\|E\|_\infty\leq s\|A\|_\infty\)</span> and <span class="math">\(\|f\|_\infty\leq s\|b\|_\infty\)</span>. If the denominator below is positive, the answer is</p>
+<div class="equation">\[s=\frac{\|r\|_\infty}
+        {\|A\|_\infty\|\widehat x\|_\infty+\|b\|_\infty}.\]</div>
+
+<p>The identity <span class="math">\(r=E\widehat x-f\)</span> gives the lower bound by the triangle inequality. To attain it when <span class="math">\(\widehat x\ne0\)</span>, pick a row functional <span class="math">\(\phi\)</span> of one-norm one such that <span class="math">\(\phi\widehat x=\|\widehat x\|_\infty\)</span>. A coordinate of maximal modulus, multiplied by the conjugate of its unit phase, works. Write <span class="math">\(d=\|A\|_\infty\|\widehat x\|_\infty+\|b\|_\infty\)</span>, then take <span class="math">\(E=(\|A\|_\infty/d)r\phi\)</span> and <span class="math">\(f=-(\|b\|_\infty/d)r\)</span>. Their contributions sum to <span class="math">\(r\)</span> and both meet their prescribed budgets. If <span class="math">\(\widehat x=0\)</span> and <span class="math">\(b\ne0\)</span>, use <span class="math">\(E=0\)</span> and <span class="math">\(f=-b\)</span> to attain <span class="math">\(s=1\)</span>.</p>
+<p>For <span class="math">\(\widehat x=(1,0)^T\)</span> in the calibration model, the infinity-norm residual is <span class="math">\(\delta\)</span>, the backward error is <span class="math">\(\delta/2\)</span>, and the relative forward error is one. The candidate fits an almost indistinguishable set of output data, but it loses the entire weak component. Conditioning describes the sensitivity of the problem. Whether a solver produces a small backward error depends on its arithmetic. The residual itself is computed in finite precision, so very small residuals may require higher precision to measure credibly.</p>
+<h2 id="laboratory">Laboratory</h2>
+<p>Run <a href="../code/ch08.py">ch08.py</a> with Python and NumPy. The code supplies <span class="math">\(A\)</span>, <span class="math">\(E\)</span> and <span class="math">\(b\)</span>, uses direct solves, and checks the attained error bound and the residual example. It prints diagnostics and has no file or network effects. A failed identity raises an assertion. For <span class="math">\(\delta=10^{-4}\)</span> and <span class="math">\(\eta=0.1\)</span>, the observed inverse-model solve error and bound were both <span class="math">\(0.111111\)</span> at the printed precision. The candidate residual was <span class="math">\(10^{-4}\)</span>, its backward error <span class="math">\(5\times10^{-5}\)</span>, and its forward relative error one.</p>
+<h2 id="exercises-and-solutions">Exercises and solutions</h2>
+<ol>
+<li>
+<p>For the same calibration matrix, place the coefficient perturbation in the strong channel: <span class="math">\(E=\operatorname{diag}(-\eta\delta,0)\)</span>. Compute <span class="math">\(q\)</span> and compare with the normwise test.<br>
+   <strong>Solution.</strong> Multiplying by <span class="math">\(A^{-1}\)</span> leaves the nonzero entry <span class="math">\(-\eta\delta\)</span>, so <span class="math">\(q=\eta\delta\)</span>. The scalar test uses <span class="math">\(\kappa_\infty(A)\varepsilon_A=\eta\)</span>. The two placements have identical <span class="math">\(\|E\|_\infty\)</span>. The exact transformed error distinguishes the directions and gives the sharper bound <span class="math">\(\eta\delta/(1-\eta\delta)\)</span>.</p>
+</li>
+<li>
+<p>Give the smallest <span class="math">\(\|E\|_\infty\)</span> for which the calibration matrix can become singular.<br>
+   <strong>Solution.</strong> If <span class="math">\(\|E\|_\infty&lt;\delta\)</span>, then <span class="math">\(\|A^{-1}E\|_\infty&lt;1\)</span> and invertibility is guaranteed. At norm <span class="math">\(\delta\)</span>, the perturbation <span class="math">\(\operatorname{diag}(0,-\delta)\)</span> cancels the weak gain. These two facts give the minimum.</p>
+</li>
+<li>
+<p>For the unperturbed coefficient matrix, choose a measurement perturbation with infinity norm <span class="math">\(\delta/10\)</span> that gives the smallest possible input change in infinity norm.<br>
+   <strong>Solution.</strong> Every <span class="math">\(f\)</span> satisfies <span class="math">\(\|f\|_\infty=\|Ah\|_\infty\leq\|h\|_\infty\)</span>. Select <span class="math">\(f=(\delta/10,0)^T\)</span>, which gives <span class="math">\(h=f\)</span> and attains this lower bound. A perturbation of the same magnitude in the weak channel gives ten percent change.</p>
+</li>
+<li>
+<p>Suppose only <span class="math">\(b\)</span> may change. Work out the minimum relative backward error of <span class="math">\((1,0)^T\)</span> when <span class="math">\(b=(1,\delta)^T\)</span>.<br>
+   <strong>Solution.</strong> Fixing <span class="math">\(E=0\)</span> forces <span class="math">\(f=-r=(0,-\delta)^T\)</span>. Dividing its norm by <span class="math">\(\|b\|_\infty=1\)</span> gives <span class="math">\(\delta\)</span>. Allowing both coefficient and right-hand-side changes admits the shared budget <span class="math">\(\delta/2\)</span> derived above.</p>
+</li>
+</ol>
+<p>The appropriate diagnostic depends on the certification question. An error bound for the reconstructed input needs conditioning information. A backward error quantifies how much the data need to move to explain a candidate.</p><nav class="chapter-nav" aria-label="Chapter order"><a href="../chapters/ch07.html">← Previous chapter</a><a href="../chapters/ch09.html">Next chapter →</a></nav></main>
+<footer>Independent study edition · <a href="https://nptel.ac.in/courses/111108157">NPTEL course</a></footer>
+</body>
+</html>
