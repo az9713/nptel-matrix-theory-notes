@@ -67,7 +67,14 @@ footer { padding: 1rem; text-align: center; color: var(--muted); background: var
   h2, h3 { break-after: avoid; }
   figure, .equation { break-inside: avoid; }
 }
-.math { display: inline-block; max-width: 100%; overflow-x: auto; vertical-align: middle; }
+.math {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  vertical-align: middle;
+}
+.math::-webkit-scrollbar { display: none; }
 .search { margin-block: 1.7rem; }
 .search label { display: block; font-weight: 600; }
 .search input {
